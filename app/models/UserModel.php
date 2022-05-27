@@ -21,7 +21,7 @@ class UserModel
             } else if ($user_type_loop == BENDAHARA_USR) {
                 $user_type_loop = "Bendahara";
             } else if ($user_type_loop == KEPALA_USR) {
-                $user_type_loop = "PPTK";
+                $user_type_loop = "Kepala Bagian";
             } else if ($user_type_loop == MASTER_USR) {
                 $user_type_loop = "Master";
             } else {

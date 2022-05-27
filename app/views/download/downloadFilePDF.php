@@ -21,7 +21,7 @@
                     <label for="example-text-input" class="col-sm-7 col-form-label">: DINAS KOPERASI DAN UMKM KABUPATEN KARAWANG</label>
                 </div>
                 <div class="row">
-                    <label for="example-text-input" class="col-sm-3 col-form-label">Pengguna Anggaran (PA)/Kuasa PA/PPTK</label>
+                    <label for="example-text-input" class="col-sm-3 col-form-label">Pengguna Anggaran (PA)/Kuasa PA/Kepala Bagian</label>
                     <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['nama_KPA']['nama_pegawai'] ?></label>
                 </div>
                 <div class="row">
