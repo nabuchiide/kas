@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Bulan Mei 2022 pada 02.38
+-- Waktu pembuatan: 28 Bulan Mei 2022 pada 14.15
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.23
 
@@ -24,6 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `kegiatan`
+--
+
+CREATE TABLE `kegiatan` (
+  `id` int(4) NOT NULL,
+  `nama_kegiatan` varchar(45) NOT NULL,
+  `organisasi` varchar(45) NOT NULL,
+  `tanggal` date NOT NULL,
+  `keterangan` text NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pegawai`
 --
 
@@ -33,15 +48,6 @@ CREATE TABLE `pegawai` (
   `no_pegawai` varchar(45) NOT NULL,
   `jabatan` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pegawai`
---
-
-INSERT INTO `pegawai` (`id`, `nama_pegawai`, `no_pegawai`, `jabatan`) VALUES
-(1, 'anne', '1510631170065', 1),
-(2, 'anne staff', '7845123654', 3),
-(3, 'anne bendahara', '1510631170067', 2);
 
 -- --------------------------------------------------------
 
@@ -58,19 +64,14 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
---
-
-INSERT INTO `user` (`user_name`, `password`, `user_type`, `id`, `no_pegawai`) VALUES
-('anne', 'anne', '1', 3, '1510631170065'),
-('anne bendahara', 'bendahara', '2', 4, '1510631170067'),
-('anne admin', 'admin', '3', 5, '7845123654'),
-('master', 'master', '0', 6, ''),
-('gagal', 'gagal', '4', 7, '');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `pegawai`
@@ -87,6 +88,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pegawai`
