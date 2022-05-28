@@ -35,7 +35,7 @@
                                 <img src="<?=BASEURL?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>main</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
-                                <li><a href="index.html">Kegiatan</a></li>
+                                <li><a href="<?= BASEURL ?>/kegiatan">Kegiatan</a></li>
                                 <li><a href="dashboard-ecommerce.html">Penerimaan</a></li>
                                 <li><a href="dashboard-ecommerce.html">Pengeluaran</a></li>
                                 <li><a href="dashboard-hospital.html">Organisasi</a></li>

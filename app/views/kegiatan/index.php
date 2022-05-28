@@ -1,29 +1,26 @@
 <div class="page-content-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                    <div class="btn-group float-right">
-                        <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li class="breadcrumb-item"><a href="<?= BASEURL ?>"><?= APL_NAME; ?></a></li>
-                            <li class="breadcrumb-item active"><?= $data['judul']; ?></li>
-                        </ol>
-                    </div>
-                    <h4 class="page-title"><?= ucwords($data['judul']); ?></h4>
+    <div class="breadcrumbbar">
+        <div class="row align-items-center">
+            <div class="col-md-8 col-lg-8">
+                <h4 class="page-title"><?= ucwords($data['judul']) ?></h4>
+                <div class="breadcrumb-list">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="<?= BASEURL ?>"><?= APL_NAME; ?></a></li>
+                        <li class="breadcrumb-item"><a href="<?= BASEURL ?>/user"><?= $data['judul'] ?></a></li>
+                    </ol>
                 </div>
             </div>
-            <div class="clearfix"></div>
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="contentbar">
         <?php Flasher::flash(); ?>
         <div id="message"></div>
-
-        <div class="row container-fluid">
-
-            <div class="col-lg-7">
-                <div class="card">
+    </div>
+    <div class="contentbar">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card m-b-30">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">Input Data Kegiatan</h4>
                         <form action="<?= BASEURL; ?>/kegiatan/tambah" method="post" class="form-enter" id="formIputData">
@@ -65,9 +62,9 @@
             </div>
         </div>
 
-        <div class="row container-fluid">
+        <div class="row">
             <div class="col">
-                <div class="card">
+                <div class="card m-b-30">
                     <div class="card-body">
                         <table class="table table-bordered data-table-format">
                             <thead>
@@ -116,41 +113,41 @@
                 </div>
             </div>
         </div>
-        <br>
     </div>
-</div>
-</div>
-<!-- Modal Detail -->
-<div class="modal fade bd-example-modal-lg" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="dataModalLabel">Detail Kegitana</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="example-text-input" class="col-sm-3 col-form-label">Nama Kegiatan</label>
-                    <label for="example-text-input" class="col-sm-9 col-form-label" id='nama_kegiatan_detail'></label>
-                </div>
-                <div class="form-group row">
-                    <label for="example-text-input" class="col-sm-3 col-form-label">organisasi</label>
-                    <label for="example-text-input" class="col-sm-9 col-form-label" id='organisasi_kegiatan_detail'></label>
-                </div>
-                <div class="form-group row">
-                    <label for="example-text-input" class="col-sm-3 col-form-label">Tanggal</label>
-                    <label for="example-text-input" class="col-sm-9 col-form-label" id='tanggal_kegiatan_detail'></label>
-                </div>
-                <div class="form-group row">
-                    <label for="example-text-input" class="col-sm-3 col-form-label">Keterangan</label>
-                    <label for="example-text-input" class="col-sm-9 col-form-label" id='ketrangan_kegiatan_detail'></label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
+
+    <!-- Modal Detail -->
+    <div class="modal fade bd-example-modal-lg" id="dataModal" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dataModalLabel">Detail Kegitana</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-3 col-form-label">Nama Kegiatan</label>
+                        <label for="example-text-input" class="col-sm-9 col-form-label" id='nama_kegiatan_detail'></label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-3 col-form-label">organisasi</label>
+                        <label for="example-text-input" class="col-sm-9 col-form-label" id='organisasi_kegiatan_detail'></label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-3 col-form-label">Tanggal</label>
+                        <label for="example-text-input" class="col-sm-9 col-form-label" id='tanggal_kegiatan_detail'></label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-3 col-form-label">Keterangan</label>
+                        <label for="example-text-input" class="col-sm-9 col-form-label" id='ketrangan_kegiatan_detail'></label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
             </div>
         </div>
     </div>
