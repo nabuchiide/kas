@@ -5,7 +5,7 @@ class User extends Controller
     {
         $data['judul']      = 'user management';
         $data['user']       = $this->model('UserModel')->getAllData();
-        $data['pegawai']    = $this->model('PengurusModel')->getAllData();
+        $data['pengurus']    = $this->model('PengurusModel')->getAllData();
        
         $this->view('templates/header', $data);
         $this->view('templates/sidemenu');
@@ -30,7 +30,12 @@ class User extends Controller
     public function ubah()
     {
         $updateData = $_POST;
-        if ($this->model("UserModel")->ubahData($updateData) > 0) {
+        $countResult = $this->model("UserModel")->ubahData($updateData);
+        echo "<pre>";
+        print_r($updateData);
+        echo "<pre>";
+        echo $countResult;
+        if ( $countResult > 0) {
             Flasher::setFlash('berhasil', 'dirubah', 'success', 'User');
             header('Location: ' . BASEURL . '/user');
             exit;

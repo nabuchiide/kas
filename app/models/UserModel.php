@@ -35,7 +35,7 @@ class UserModel
     public function getOneDataById($id)
     {
         $this->db->query(" SELECT * from user WHERE id_user =:id_user  ");
-        $this->db->bind('id', $id);
+        $this->db->bind('id_user', $id);
         return $this->db->single();
     }
 
@@ -58,6 +58,7 @@ class UserModel
 
     public function ubahData($data)
     {
+        
         $query = " UPDATE user SET 
                         user_name   =:user_name,
                         password    =:password,
@@ -78,11 +79,11 @@ class UserModel
         return $this->db->rowCount();
     }
 
-    public function hapusData($id)
+    public function hapusData($id_user)
     {
         $query = " DELETE FROM user WHERE id_user=:id_user ";
         $this->db->query($query);
-        $this->db->bind('id', $id);
+        $this->db->bind('id_user', $id_user);
         $this->db->execute();
         return $this->db->rowCount();
     }

@@ -41,6 +41,12 @@
     <script src="<?= BASEURL ?>/assets/js/custom/custom-dashboard.js"></script>
     <!-- Core js -->
     <script src="<?= BASEURL ?>/assets/js/core.js"></script>
+
+    <!-- Responsive examples -->
+    <script src="<?= BASEURL ?>/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="<?= BASEURL ?>/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+    
     <!-- End js -->
 
 </head>
