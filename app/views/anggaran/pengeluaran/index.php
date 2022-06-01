@@ -110,7 +110,7 @@ $dataKegiatan       = $data['kegiatan'];
                                 <td><?= $no; ?></td>
                                 <td><?= $data['tanggal']; ?></td>
                                 <td>
-                                    <a href="#" class="getNamaKegiatan" data-kegiatan="<?= $data['nama_kegiatan']; ?>" data-id="<?= $data['id']; ?>" data-tanggal="<?= $data['tanggal']; ?>" data-status="<?= $data['status']; ?>" data-dismiss="modal">
+                                    <a href="#" class="getNamaKegiatan" data-kegiatan="<?= $data['nama_kegiatan']; ?>" data-id="<?= $data['id_kegiatan']; ?>" data-tanggal="<?= $data['tanggal']; ?>" data-status="<?= $data['status']; ?>" data-dismiss="modal">
                                         <span>
                                             <?= $data['nama_kegiatan']; ?>
                                         </span>
@@ -164,14 +164,14 @@ $dataKegiatan       = $data['kegiatan'];
             },
             method: 'post',
             dataType: 'json',
-            beforeSend: function() {
-                $.blockUI({
-                    message: null
-                });
-            },
-            complete: function() {
-                $.unblockUI();
-            },
+            // beforeSend: function() {
+            //     $.blockUI({
+            //         message: null
+            //     });
+            // },
+            // complete: function() {
+            //     $.unblockUI();
+            // },
             success: function(data) {
                 var data_load = '';
                 num = 0;
@@ -183,15 +183,15 @@ $dataKegiatan       = $data['kegiatan'];
                         const element = data[index];
                         var inner_data = "save_" + index;
                         var function_save = "saveDataElement('" + inner_data + "')";
-                        var function_connfirmation = "hapusData(" + element.id + ");"
+                        var function_connfirmation = "hapusData(" + element.id_anggaran + ");"
                         data_load += '<tr>'
-                        data_load += '    <td><input class="form-control" value="' + element.id + '" type="hidden" name="id" id="" >' + num + '</td>'
+                        data_load += '    <td><input class="form-control" value="' + element.id_anggaran + '" type="hidden" name="id" id="" >' + num + '</td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.tanggal + '" type="date" name="tanggal" id="" placeholder="tanggal" readonly="readonly"></td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.no_rekening + '" type="text" name="no_rekening" id="" placeholder="nomor rekening"></td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.keterangan + '" type="text" name="keterangan" id="" placeholder="keterangan" required ></td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.nominal + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
                         data_load += '    <td class="dataInput">'
-                        data_load += '          <button class="getHapus btn btn-danger waves-effect waves-light" data-id="' + element.id + '" onclick="' + function_connfirmation + '"><span>Hapus</span></button>'
+                        data_load += '          <button class="getHapus btn btn-danger waves-effect waves-light" data-id="' + element.id_anggaran + '" onclick="' + function_connfirmation + '"><span>Hapus</span></button>'
                         data_load += '          <button class="save btn btn-primary waves-effect waves-light" id="' + inner_data + '" onclick="' + function_save + '">Simpan</button>'
                         data_load += '    </td>'
                         data_load += '</tr>'
@@ -217,14 +217,14 @@ $dataKegiatan       = $data['kegiatan'];
                 },
                 method: 'post',
                 dataType: 'json',
-                beforeSend: function() {
-                    $.blockUI({
-                        message: null
-                    });
-                },
-                complete: function() {
-                    $.unblockUI();
-                },
+                // beforeSend: function() {
+                //     $.blockUI({
+                //         message: null
+                //     });
+                // },
+                // complete: function() {
+                //     $.unblockUI();
+                // },
                 success: function(data) {
                     if (data > 0) {
                         $("#message").html(message('berhasil', 'dihapus', 'success', 'pengeluaran'));
@@ -298,14 +298,14 @@ $dataKegiatan       = $data['kegiatan'];
             url: url_send_data,
             data: $('#insert-pengeluaran').serialize(),
             method: 'post',
-            beforeSend: function() {
-                $.blockUI({
-                    message: null,
-                });
-            },
-            complete: function() {
-                $.unblockUI();
-            },
+            // beforeSend: function() {
+            //     $.blockUI({
+            //         message: null,
+            //     });
+            // },
+            // complete: function() {
+            //     $.unblockUI();
+            // },
             success: function(result) {
                 $("#message").html(message('sukses', 'diubah atau ditambahkan', 'success', 'pemasukan'));
                 $('#insert-pengeluaran').remove();

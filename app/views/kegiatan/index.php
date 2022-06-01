@@ -158,8 +158,6 @@
                 return e.which !== 13;
             });
 
-            
-
             $('.getUbah').on('click', function() {
                 const id = $(this).data('id')
                 console.log(id);
