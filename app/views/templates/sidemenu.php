@@ -27,7 +27,8 @@
                             </a>
                             <ul class="vertical-submenu">
                                 <li><a href="<?= BASEURL ?>/user">User</a></li>
-                                <li><a href="<?= BASEURL ?>/pegawai">Pegawai</a></li>
+                                <li><a href="<?= BASEURL ?>/pengurus">Pengurus</a></li>
+                                <li><a href="<?= BASEURL ?>/donatur">Donatur</a></li>
                             </ul>
                         </li>
                         <li>
@@ -36,10 +37,8 @@
                             </a>
                             <ul class="vertical-submenu">
                                 <li><a href="<?= BASEURL ?>/kegiatan">Kegiatan</a></li>
-                                <li><a href="dashboard-ecommerce.html">Penerimaan</a></li>
-                                <li><a href="dashboard-ecommerce.html">Pengeluaran</a></li>
-                                <li><a href="dashboard-hospital.html">Organisasi</a></li>
-                                <li><a href="dashboard-school.html">School</a></li>
+                                <li><a href="<?= BASEURL ?>/pemasukan ">Penerimaan</a></li>
+                                <li><a href="<?= BASEURL ?>/pengeluaran">Pengeluaran</a></li>
                             </ul>
                         </li>
                         <li>

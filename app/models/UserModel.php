@@ -11,8 +11,8 @@ class UserModel
     public function getAllData()
     {
         $allData = [];
-        $this->db->query(" SELECT u.id, u.user_name, u.user_type, p.nama_pegawai 
-            from user u, pegawai p WHERE u.no_pegawai = p.no_pegawai and u.user_type != 0  ORDER BY u.id DESC ");
+        $this->db->query(" SELECT u.id_user, u.user_name, u.user_type, p.nama_pengurus 
+            from user u, pengurus p WHERE u.no_pengurus = p.no_pengurus and u.user_type != 0  ORDER BY u.id_user DESC ");
         $allData = $this->db->resultset();
         for ($i = 0; $i < count($allData); $i++) {
             $user_type_loop = $allData[$i]["user_type"];
@@ -34,7 +34,7 @@ class UserModel
 
     public function getOneDataById($id)
     {
-        $this->db->query(" SELECT * from user WHERE id =:id  ");
+        $this->db->query(" SELECT * from user WHERE id_user =:id_user  ");
         $this->db->bind('id', $id);
         return $this->db->single();
     }
@@ -42,15 +42,15 @@ class UserModel
     public function tambahData($data)
     {
         $query = " INSERT INTO user 
-                    (id, user_name, password, user_type, no_pegawai)
+                    (id_user, user_name, password, user_type, no_pengurus)
                     VALUES
-                    ('', :user_name, :password, :user_type, :no_pegawai)
+                    ('', :user_name, :password, :user_type, :no_pengurus)
                 ";
         $this->db->query($query);
         $this->db->bind('user_name', $data['user_name']);
         $this->db->bind('password', $data['password']);
         $this->db->bind('user_type', $data['user_type']);
-        $this->db->bind('no_pegawai', $data['no_pegawai']);
+        $this->db->bind('no_pengurus', $data['no_pengurus']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -62,17 +62,17 @@ class UserModel
                         user_name   =:user_name,
                         password    =:password,
                         user_type   =:user_type,
-                        no_pegawai  =:no_pegawai 
+                        no_pengurus  =:no_pengurus 
                     WHERE 
-                        id  =:id
+                    id_user  =:id_user
                 ";
 
         $this->db->query($query);
         $this->db->bind('user_name', $data['user_name']);
         $this->db->bind('password', $data['password']);
         $this->db->bind('user_type', $data['user_type']);
-        $this->db->bind('no_pegawai', $data['no_pegawai']);
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('no_pengurus', $data['no_pengurus']);
+        $this->db->bind('id_user', $data['id_user']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -80,7 +80,7 @@ class UserModel
 
     public function hapusData($id)
     {
-        $query = " DELETE FROM user WHERE id=:id ";
+        $query = " DELETE FROM user WHERE id_user=:id_user ";
         $this->db->query($query);
         $this->db->bind('id', $id);
         $this->db->execute();

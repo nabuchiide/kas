@@ -27,14 +27,14 @@
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Nama</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="hidden" value="" id="id_kegiatan" name="id">
+                                    <input class="form-control" type="hidden" value="" id="id_kegiatan" name="id_kegiatan">
                                     <input class="form-control" type="text" value="" id="nama_kegiatan" name="nama_kegiatan" placeholder="Nama Kegiatan">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Nama Organisasi</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Nama Kegiatan</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="" id="organisasi" name="organisasi" placeholder="Nama organisasi">
+                                    <input class="form-control" type="text" value="" id="lokasi" name="lokasi" placeholder="Lokasi Kegiatan">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -71,7 +71,7 @@
                                 <th>No</th>
                                 <th>Tanggal</th>
                                 <th>Nama Kegitan</th>
-                                <th>organisasi</th>
+                                <th>Lokasi</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </thead>
@@ -83,21 +83,21 @@
                                         <td><?= $no; ?></td>
                                         <td><?= $data['tanggal']; ?></td>
                                         <td>
-                                            <a href="#" class="getDetail" data-id="<?= $data['id']; ?>" data-toggle="modal" data-target="#dataModal">
+                                            <a href="#" class="getDetail" data-id="<?= $data['id_kegiatan']; ?>" data-toggle="modal" data-target="#dataModal">
                                                 <span>
                                                     <?= $data['nama_kegiatan']; ?>
                                                 </span>
                                             </a>
                                         </td>
-                                        <td><?= $data['organisasi']; ?></td>
+                                        <td><?= $data['lokasi']; ?></td>
                                         <td><?= $data['status']; ?></td>
                                         <td>
-                                            <a href="<?= BASEURL; ?>/kegiatan/hapus/<?= $data['id']; ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
+                                            <a href="<?= BASEURL; ?>/kegiatan/hapus/<?= $data['id_kegiatan']; ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
                                                 <span>
                                                     Hapus
                                                 </span>
                                             </a>
-                                            <a href="#" class="getUbah btn btn-primary waves-effect waves-light" data-id="<?= $data['id']; ?>">
+                                            <a href="#" class="getUbah btn btn-primary waves-effect waves-light" data-id="<?= $data['id_kegiatan']; ?>">
                                                 <span>
                                                     Ubah
                                                 </span>
@@ -158,10 +158,11 @@
                 return e.which !== 13;
             });
 
-            $('.data-table-format').DataTable();
+            
 
             $('.getUbah').on('click', function() {
                 const id = $(this).data('id')
+                console.log(id);
                 $.ajax({
                     url: '<?= BASEURL; ?>/kegiatan/getUbah',
                     data: {
@@ -171,7 +172,7 @@
                     dataType: 'json',
                     success: function(data) {
                         console.log(data);
-                        $('#id_kegiatan').val(data.id);
+                        $('#id_kegiatan').val(data.id_kegiatan);
                         $('#nama_kegiatan').val(data.nama_kegiatan);
                         $('#organisasi').val(data.organisasi);
                         $('#tanggal').val(data.tanggal);
@@ -201,6 +202,8 @@
                     }
                 })
             });
+
+            $('.data-table-format').DataTable();
         })
 
         function saveData() {

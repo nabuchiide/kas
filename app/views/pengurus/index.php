@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Input Data Pegawai</h4>
                     <!-- SELECT `id`, `nama_pegawai`, `alamat`, `no_pegawai`, `agama` FROM `pegawai` WHERE 1 -->
-                    <form action="<?= BASEURL; ?>/pegawai/tambah" method="post" class="form-enter" id="formInputData">
+                    <form action="<?= BASEURL; ?>/pengurus/tambah" method="post" class="form-enter" id="formInputData">
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-10">
@@ -77,13 +77,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($data['pegawai'] as $data) : ?>
+                            <?php foreach ($data['pengurus'] as $data) : ?>
                                 <tr>
                                     <td><?= $data['no_pegawai']; ?></td>
                                     <td><?= $data['nama_pegawai']; ?></td>
                                     <td><?= $data['jabatan']; ?></td>
                                     <td>
-                                        <a href="<?= BASEURL; ?>/pegawai/hapus/<?= $data['id']; ?>/<?= $data['jabatan'] ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
+                                        <a href="<?= BASEURL; ?>/pengurus/hapus/<?= $data['id']; ?>/<?= $data['jabatan'] ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
                                             <span>
                                                 Hapus
                                             </span>
@@ -120,7 +120,7 @@
 
             const id = $(this).data('id')
             $.ajax({
-                url: '<?= BASEURL; ?>/pegawai/getUbah/',
+                url: '<?= BASEURL; ?>/pengurus/getUbah/',
                 data: {
                     id: id
                 },

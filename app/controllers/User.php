@@ -5,7 +5,7 @@ class User extends Controller
     {
         $data['judul']      = 'user management';
         $data['user']       = $this->model('UserModel')->getAllData();
-        $data['pegawai']    = $this->model('PegawaiModel')->getAllData();
+        $data['pegawai']    = $this->model('PengurusModel')->getAllData();
        
         $this->view('templates/header', $data);
         $this->view('templates/sidemenu');

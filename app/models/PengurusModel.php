@@ -1,6 +1,6 @@
 <?php
 
-class PegawaiModel
+class PengurusModel
 {
 
     private $db;
@@ -13,7 +13,7 @@ class PegawaiModel
     public function getAllData()
     {
         $allData = [];
-        $this->db->query(" SELECT * FROM pegawai ORDER BY Id DESC ");
+        $this->db->query(" SELECT * FROM pengurus ORDER BY id_pengurus DESC ");
         $allData = $this->db->resultset();
         for ($i = 0; $i < count($allData); $i++) {
             $jabatan_loop = $allData[$i]['jabatan'];
@@ -31,33 +31,33 @@ class PegawaiModel
         return $allData;
     }
 
-    public function getOneData($id)
+    public function getOneData($id_pengurus)
     {
-        $this->db->query('select * from pegawai where id=:id');
-        $this->db->bind('id', $id);
+        $this->db->query('select * from pengurus where id_pengurus=:id_pengurus');
+        $this->db->bind('id_pengurus', $id_pengurus);
         return $this->db->single();
     }
 
     public function tambahData($data)
     {
-        $query = " INSERT INTO pegawai
+        $query = " INSERT INTO pengurus
                     VALUES
-                    ('', :nama_pegawai, :no_pegawai, :jabatan) 
+                    ('', :nama_pengurus, :no_pengurus, :jabatan) 
                 ";
         $this->db->query($query);
-        $this->db->bind('nama_pegawai', $data['nama_pegawai']);
-        $this->db->bind('no_pegawai', $data['no_pegawai']);
+        $this->db->bind('nama_pengurus', $data['nama_pengurus']);
+        $this->db->bind('no_pengurus', $data['no_pengurus']);
         $this->db->bind('jabatan', $data['jabatan']);
 
         $this->db->execute();
         return $this->db->rowCount();
     }
 
-    public function hapus($id)
+    public function hapus($id_pengurus)
     {
-        $query = " DELETE  FROM pegawai WHERE id=:id ";
+        $query = " DELETE  FROM pengurus WHERE id=:id_pengurus";
         $this->db->query($query);
-        $this->db->bind('id', $id);
+        $this->db->bind('id_pengurus', $id_pengurus);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -65,18 +65,18 @@ class PegawaiModel
 
     public function ubahData($data)
     {
-        $query = " UPDATE pegawai SET 
-                        nama_pegawai    =:nama_pegawai,
-                        no_pegawai      =:no_pegawai,
+        $query = " UPDATE pengurus SET 
+                        nama_pengurus    =:nama_pengurus,
+                        no_pengurus      =:no_pengurus,
                         jabatan         =:jabatan
                     WHERE 
-                        id=:id
+                    id_pengurus=:id_pengurus
                 ";
         $this->db->query($query);
-        $this->db->bind('nama_pegawai', $data['nama_pegawai']);
-        $this->db->bind('no_pegawai', $data['no_pegawai']);
+        $this->db->bind('nama_pengurus', $data['nama_pengurus']);
+        $this->db->bind('no_pengurus', $data['no_pengurus']);
         $this->db->bind('jabatan', $data['jabatan']);
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('id_pengurus', $data['id_pengurus']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -84,28 +84,28 @@ class PegawaiModel
 
     public function getDataByJabatan($jabatan)
     {
-        $this->db->query("  SELECT nama_pegawai, no_pegawai FROM pegawai WHERE jabatan =:jabatan ORDER BY id DESC limit 1 ");
+        $this->db->query("  SELECT nama_pengurus, no_pengurus FROM pengurus WHERE jabatan =:jabatan ORDER BY id_pengurus DESC limit 1 ");
         $this->db->bind('jabatan', $jabatan);
         return $this->db->single();
     }
 
 
-    public function countNoPegawai($no_pegawai){
-        $this->db->query("  SELECT count(*) AS CountData FROM pegawai WHERE no_pegawai =:no_pegawai ");
-        $this->db->bind('no_pegawai', $no_pegawai);
+    public function countNopengurus($no_pengurus){
+        $this->db->query("  SELECT count(*) AS CountData FROM pengurus WHERE no_pengurus =:no_pengurus ");
+        $this->db->bind('no_pengurus', $no_pengurus);
         return $this->db->single();
     }
 
     public function getNamaByJabatan($jabatan)
     {
-        $this->db->query("  SELECT nama_pegawai, no_pegawai FROM pegawai WHERE jabatan =:jabatan ORDER BY id DESC limit 1 ");
+        $this->db->query("  SELECT nama_pengurus, no_pengurus FROM pengurus WHERE jabatan =:jabatan ORDER BY id_pengurus DESC limit 1 ");
         $this->db->bind('jabatan', $jabatan);
         return $this->db->single();
     }
 
     public function getDataCountJabatan($jabatan)
     {
-        $this->db->query("  SELECT count(*) AS CountData FROM pegawai WHERE jabatan =:jabatan ");
+        $this->db->query("  SELECT count(*) AS CountData FROM pengurus WHERE jabatan =:jabatan ");
         $this->db->bind('jabatan', $jabatan);
         return $this->db->single();
     }

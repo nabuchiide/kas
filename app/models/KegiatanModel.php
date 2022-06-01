@@ -60,11 +60,11 @@ class KegiatanModel
 
         $query = " INSERT INTO kegiatan
                     VALUES
-                    ('', :nama_kegiatan, :organisasi, :tanggal, :keterangan, :status)
+                    ('', :nama_kegiatan, :lokasi, :tanggal, :keterangan, :status)
                 ";
         $this->db->query($query);
         $this->db->bind('nama_kegiatan', $data['nama_kegiatan']);
-        $this->db->bind('organisasi', $data['organisasi']);
+        $this->db->bind('lokasi', $data['lokasi']);
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('keterangan', $data['keterangan']);
         $this->db->bind('status', '0');
@@ -79,52 +79,52 @@ class KegiatanModel
         $query = " UPDATE kegiatan
                     SET
                         nama_kegiatan   =:nama_kegiatan, 
-                        organisasi          =:organisasi, 
+                        lokasi          =:lokasi, 
                         tanggal         =:tanggal, 
                         keterangan      =:keterangan
                     WHERE
-                        id =:id
+                        id_kegiatan =:id_kegiatan
                 ";
         $this->db->query($query);
         $this->db->bind('nama_kegiatan', $data['nama_kegiatan']);
-        $this->db->bind('organisasi', $data['organisasi']);
+        $this->db->bind('lokasi', $data['lokasi']);
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('keterangan', $data['keterangan']);
-        $this->db->bind('id', $data['id']);
+        $this->db->bind('id_kegiatan', $data['id_kegiatan']);
 
         $this->db->execute();
         return $this->db->rowCount();
     }
 
-    public function ubahStatus($id, $status)
+    public function ubahStatus($id_kegiatan, $status)
     {
         $query = " UPDATE kegiatan
                     SET
                         status   =:status
                     WHERE
-                        id =:id
+                        iid_kegiatand =:id_kegiatan
                 ";
         $this->db->query($query);
         $this->db->bind('status', $status);
-        $this->db->bind('id', $id);
+        $this->db->bind('id_kegiatan', $id_kegiatan);
 
         $this->db->execute();
         return $this->db->rowCount();
     }
 
-    public function getOneData($id)
+    public function getOneData($id_kegiatan)
     {
-        $this->db->query(" SELECT * from kegiatan WHERE id =:id ");
-        $this->db->bind('id', $id);
+        $this->db->query(" SELECT * from kegiatan WHERE id_kegiatan =:id_kegiatan ");
+        $this->db->bind('id_kegiatan', $id_kegiatan);
         return $this->db->single();
     }
 
-    public function hapusData($id)
+    public function hapusData($id_kegiatan)
     {
-        $query = " DELETE FROM kegiatan WHERE id =:id;
+        $query = " DELETE FROM kegiatan WHERE id_kegiatan =:id_kegiatan;
                  ";
         $this->db->query($query);
-        $this->db->bind('id', $id);
+        $this->db->bind('id_kegiatan', $id_kegiatan);
         $this->db->execute();
         return $this->db->rowCount();
     }

@@ -1,26 +1,26 @@
-<div class="page-content-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                    <div class="btn-group float-right">
-                        <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li class="breadcrumb-item"><a href="<?= BASEURL ?>"><?= APL_NAME; ?></a></li>
-                            <li class="breadcrumb-item active"><?= $data['judul']; ?></li>
-                        </ol>
-                    </div>
-                    <h4 class="page-title"><?= ucwords($data['judul']); ?></h4>
-                </div>
+<div class="breadcrumbbar">
+    <div class="row align-items-center">
+        <div class="col-md-8 col-lg-8">
+            <h4 class="page-title"><?= $data['judul'] ?></h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= BASEURL ?>"><?= APL_NAME; ?></a></li>
+                    <li class="breadcrumb-item"><a href="<?= BASEURL ?>/user"><?= $data['judul'] ?></a></li>
+                </ol>
             </div>
-            <div class="clearfix"></div>
         </div>
     </div>
+</div>
+
+<div class="contentbar">
     <?php Flasher::flash(); ?>
     <div id="message"></div>
+</div>
 
-    <div class="row container-fluid">
+<div class="contentbar">
+    <div class="row">
         <div class="col-lg-7">
-            <div class="card">
+            <div class="card m-b-30">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">Input Data Pemasukan</h4>
                     <form action="<?= BASEURL; ?>/pemasukan/tambah" method="post" class="form-enter" id="formInputData">
@@ -60,10 +60,13 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-
+<div class="contentbar">
+    <div class="row">
         <div class="col-lg-10">
-            <div class="card">
+            <div class="card m-b-30">
                 <div class="card-body">
                     <table class="table table-bordered data-table-format">
                         <thead>
@@ -108,10 +111,9 @@
                 </div>
             </div>
         </div>
-
     </div>
-    <br>
 </div>
+
 <script>
     $(document).ready(function() {
         $('.data-table-format').DataTable();
@@ -148,12 +150,12 @@
 
     function save_data() {
         if ($('#tanggal').val() == "") {
-            $("#message").html(message('gagal', 'diubah atau ditambahkan, Tanggal harus di isi', 'danger','Pemasukan'));
+            $("#message").html(message('gagal', 'diubah atau ditambahkan, Tanggal harus di isi', 'danger', 'Pemasukan'));
             return
 
         }
         if ($('#nominal').val() == "") {
-            $("#message").html(message('gagal', 'diubah atau ditambahkan, nominal harus di isi', 'danger','Pemasukan'));
+            $("#message").html(message('gagal', 'diubah atau ditambahkan, nominal harus di isi', 'danger', 'Pemasukan'));
             return
 
         }

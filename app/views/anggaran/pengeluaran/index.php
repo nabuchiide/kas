@@ -1,27 +1,27 @@
 <?php
 $dataKegiatan       = $data['kegiatan'];
 ?>
-<div class="page-content-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                    <div class="btn-group float-right">
-                        <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li class="breadcrumb-item"><a href="<?= BASEURL ?>"><?= APL_NAME; ?></a></li>
-                            <li class="breadcrumb-item active"><?= $data['judul']; ?></li>
-                        </ol>
-                    </div>
-                    <h4 class="page-title"><?= ucwords($data['judul']); ?></h4>
-                </div>
+<div class="breadcrumbbar">
+    <div class="row align-items-center">
+        <div class="col-md-8 col-lg-8">
+            <h4 class="page-title"><?= $data['judul'] ?></h4>
+            <div class="breadcrumb-list">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= BASEURL ?>"><?= APL_NAME; ?></a></li>
+                    <li class="breadcrumb-item"><a href="<?= BASEURL ?>/user"><?= $data['judul'] ?></a></li>
+                </ol>
             </div>
-            <div class="clearfix"></div>
         </div>
     </div>
+</div>
+
+<div class="contentbar">
     <?php Flasher::flash(); ?>
     <div id="message"></div>
+</div>
 
-    <div class="row container-fluid">
+<div class="contentbar">
+    <div class="row">
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
@@ -42,8 +42,11 @@ $dataKegiatan       = $data['kegiatan'];
             </div>
         </div>
     </div>
+</div>
 
-    <div class="row container-fluid" id="cardAnggaran" style="display: none;">
+<div class="contentbar">
+
+    <div class="row " id="cardAnggaran" style="display: none;">
         <div class="col-lg">
             <div id="message"></div>
             <div class="card">
@@ -77,6 +80,7 @@ $dataKegiatan       = $data['kegiatan'];
     </div>
 
     <div class="row d-flex justify-content-start formSubmitData" style="display: none;" id="formSubmitData"></div>
+
 </div>
 
 <!-- Modal -->
