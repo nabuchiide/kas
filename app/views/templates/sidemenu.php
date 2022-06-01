@@ -23,7 +23,7 @@
                     <ul class="vertical-menu">
                         <li>
                             <a href="javaScript:void();">
-                                <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>Personalia</span><i class="feather icon-chevron-right pull-right"></i>
+                                <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>Kategori</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
                                 <li><a href="<?= BASEURL ?>/user">User</a></li>
