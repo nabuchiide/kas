@@ -38,12 +38,11 @@ class AnggaranModel
         return $allData;
     }
 
-    public function getDataByIdKegiatan($id_kegiatan, $type_anggaran)
+    public function getDataByIdKegiatan($id_kegiatan)
     {
         $allData = [];
-        $this->db->query(" SELECT * FROM anggaran WHERE id_kegiatan =:id_kegiatan && type_anggaran =:type_anggaran");
+        $this->db->query(" SELECT * FROM anggaran WHERE id_kegiatan =:id_kegiatan");
         $this->db->bind('id_kegiatan', $id_kegiatan);
-        $this->db->bind('type_anggaran', $type_anggaran);
         $allData = $this->db->resultset();
         return $allData;
     }
@@ -51,15 +50,14 @@ class AnggaranModel
     public function tambahData($data)
     {
         $query = " INSERT INTO 
-                anggaran(id_anggaran, tanggal, nominal, no_rekening, keterangan, type_anggaran, id_kegiatan, status)  
-                VALUES ('', :tanggal, :nominal, :no_rekening, :keterangan, :type_anggaran, :id_kegiatan, :status)
+                anggaran(id_anggaran, tanggal, nominal, keterangan, tipe_anggaran, id_kegiatan, status)  
+                VALUES ('', :tanggal, :nominal, :keterangan, :tipe_anggaran, :id_kegiatan, :status)
             ";
         $this->db->query($query);
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('nominal', $data['nominal']);
-        $this->db->bind('no_rekening', $data['no_rekening']);
         $this->db->bind('keterangan', $data['keterangan']);
-        $this->db->bind('type_anggaran', $data['type_anggaran']);
+        $this->db->bind('tipe_anggaran', $data['tipe_anggaran']);
         $this->db->bind('id_kegiatan', $data['id_kegiatan']);
         $this->db->bind('status', $data['status']);
 
@@ -72,9 +70,8 @@ class AnggaranModel
         $query = "  UPDATE anggaran SET 
                         tanggal         =:tanggal,
                         nominal         =:nominal,
-                        no_rekening     =:no_rekening,
                         keterangan      =:keterangan,
-                        type_anggaran   =:type_anggaran,
+                        tipe_anggaran   =:tipe_anggaran,
                         id_kegiatan     =:id_kegiatan,
                         status          =:status 
                     WHERE 
@@ -84,9 +81,8 @@ class AnggaranModel
         $this->db->bind('id_anggaran', $data['id_anggaran']);
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('nominal', $data['nominal']);
-        $this->db->bind('no_rekening', $data['no_rekening']);
         $this->db->bind('keterangan', $data['keterangan']);
-        $this->db->bind('type_anggaran', $data['type_anggaran']);
+        $this->db->bind('tipe_anggaran', $data['tipe_anggaran']);
         $this->db->bind('id_kegiatan', $data['id_kegiatan']);
         $this->db->bind('status', $data['status']);
 

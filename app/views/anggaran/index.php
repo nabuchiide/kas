@@ -60,9 +60,9 @@ $dataKegiatan       = $data['kegiatan'];
                             <tr>
                                 <th>No</th>
                                 <th>Tanggal</th>
-                                <th>Nomor Rekening</th>
+                                <th>Tipe Anggaran</th>
                                 <th>Uraian</th>
-                                <th>Kredit</th>
+                                <th>nominal</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -88,9 +88,10 @@ $dataKegiatan       = $data['kegiatan'];
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="dataModalLabel">Data Pegawai</h5>
+                <h5 class="modal-title" id="dataModalLabel">Data Kegiatan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
+
                 </button>
             </div>
             <div class="modal-body table-responsive">
@@ -158,7 +159,7 @@ $dataKegiatan       = $data['kegiatan'];
 
     function reloadTabelAnggaran(id) {
         $.ajax({
-            url: '<?= BASEURL; ?>/pengeluaran/getByKegitanAnggaran',
+            url: '<?= BASEURL; ?>/anggaran/getByKegitanAnggaran',
             data: {
                 id: id
             },
@@ -184,10 +185,17 @@ $dataKegiatan       = $data['kegiatan'];
                         var inner_data = "save_" + index;
                         var function_save = "saveDataElement('" + inner_data + "')";
                         var function_connfirmation = "hapusData(" + element.id_anggaran + ");"
+                        var tipeUangMasuk = (element.tipe_anggaran == "<? UANG_MASUK ?>") ? "selected" : "";
+                        var tipeUangKeluar = (element.tipe_anggaran == "<? UANG_KELUAR ?>") ? "selected" : "";
                         data_load += '<tr>'
                         data_load += '    <td><input class="form-control" value="' + element.id_anggaran + '" type="hidden" name="id" id="" >' + num + '</td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.tanggal + '" type="date" name="tanggal" id="" placeholder="tanggal" readonly="readonly"></td>'
-                        data_load += '    <td class="dataInput"><input class="form-control" value="' + element.no_rekening + '" type="text" name="no_rekening" id="" placeholder="nomor rekening"></td>'
+                        data_load += '    <td class="dataInput">'
+                        data_load += '            <select name="tipe_anggaran" id="tipe_anggaran" class="form-control">'
+                        data_load += '                <option value="<?= UANG_MASUK ?>" ' + tipeUangMasuk + '>Debit</option>'
+                        data_load += '                <option value="<?= UANG_KELUAR ?>" ' + tipeUangKeluar + '>Kredit</option>'
+                        data_load += '            </select>'
+                        data_load += '    </td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.keterangan + '" type="text" name="keterangan" id="" placeholder="keterangan" required ></td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.nominal + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
                         data_load += '    <td class="dataInput">'
@@ -200,7 +208,8 @@ $dataKegiatan       = $data['kegiatan'];
 
                 $('#resultAnggaran').html(data_load);
             },
-            error: function() {
+            error: function(data) {
+                console.log(data);
                 console.log("ERROR");
             }
         });
@@ -211,7 +220,7 @@ $dataKegiatan       = $data['kegiatan'];
         console.log(isExecuted);
         if (isExecuted) {
             $.ajax({
-                url: '<?= BASEURL ?>/pengeluaran/hapus',
+                url: '<?= BASEURL ?>/anggaran/hapus',
                 data: {
                     id: id
                 },
@@ -226,10 +235,11 @@ $dataKegiatan       = $data['kegiatan'];
                 //     $.unblockUI();
                 // },
                 success: function(data) {
+                   
                     if (data > 0) {
-                        $("#message").html(message('berhasil', 'dihapus', 'success', 'pengeluaran'));
+                        $("#message").html(message('berhasil', 'dihapus', 'success', 'anggaran'));
                     } else {
-                        $("#message").html(message('gagal', 'dihapus', 'danger', 'pengeluaran'));
+                        $("#message").html(message('gagal', 'dihapus', 'danger', 'anggaran'));
                     }
                     reloadTabelAnggaran($("#id_kegiatan").val());
 
@@ -248,7 +258,7 @@ $dataKegiatan       = $data['kegiatan'];
         const dataLength1 = document.getElementById(id).parentElement.parentElement.childNodes;
         isEdit = false;
         var form_costume = document.createElement("form");
-        form_costume.setAttribute("id", "insert-pengeluaran");
+        form_costume.setAttribute("id", "insert-anggaran");
         form_costume.setAttribute("method", "post");
 
         for (let i = 0; i < dataLength1.length; i++) {
@@ -258,10 +268,10 @@ $dataKegiatan       = $data['kegiatan'];
 
                     for (let j = 0; j < element.children.length; j++) {
                         const element01 = element.children[j];
-                        if (element01.tagName == "INPUT") {
+                        if (element01.tagName == "INPUT" || element01.tagName == "SELECT") {
                             element01_name = element01.name;
                             element01_value = element01.value;
-                            console.log("element name :: => " + element01_name + "   ||| element_value :: => " + element01_value);
+                            // console.log("element name :: => " + element01_name + "   ||| element_value :: => " + element01_value);
 
                             var inp = document.createElement('input')
                             inp.setAttribute('type', 'text');
@@ -279,9 +289,9 @@ $dataKegiatan       = $data['kegiatan'];
         }
 
         if (!isEdit) {
-            url_send_data = "<?= BASEURL ?>/pengeluaran/tambah";
+            url_send_data = "<?= BASEURL ?>/anggaran/tambah";
         } else {
-            url_send_data = "<?= BASEURL ?>/pengeluaran/ubah";
+            url_send_data = "<?= BASEURL ?>/anggaran/ubah";
         }
         // form_costume.setAttribute("action", url_send_data);
         console.log(url_send_data);
@@ -296,7 +306,7 @@ $dataKegiatan       = $data['kegiatan'];
 
         $.ajax({
             url: url_send_data,
-            data: $('#insert-pengeluaran').serialize(),
+            data: $('#insert-anggaran').serialize(),
             method: 'post',
             // beforeSend: function() {
             //     $.blockUI({
@@ -307,12 +317,14 @@ $dataKegiatan       = $data['kegiatan'];
             //     $.unblockUI();
             // },
             success: function(result) {
+                console.log(result);
                 $("#message").html(message('sukses', 'diubah atau ditambahkan', 'success', 'pemasukan'));
-                $('#insert-pengeluaran').remove();
+                $('#insert-anggaran').remove();
                 data_id.remove();
                 reloadTabelAnggaran($("#id_kegiatan").val());
             },
-            error: function() {
+            error: function(result) {
+                console.log(result);
                 console.log("GAGAL");
             }
         });
@@ -322,16 +334,16 @@ $dataKegiatan       = $data['kegiatan'];
     function removeElement(id) {
         var data_id = document.getElementById(id).parentElement.parentElement;
         data_id.remove();
-        $("#message").html(message('berhasil', 'dihapus', 'success', 'pengeluaran'));
+        $("#message").html(message('berhasil', 'dihapus', 'success', 'anggaran'));
     }
 
     function validationData(elementName, elementValue) {
         if (elementName == 'keterangan' && elementValue == '') {
-            $("#message").html(message('gagal', 'diubah atau ditambahkan, Keterangan harus di isi', 'danger', 'pengeluaran'));
+            $("#message").html(message('gagal', 'diubah atau ditambahkan, Keterangan harus di isi', 'danger', 'anggaran'));
             return false;
 
         } else if (elementName == 'nominal' && (elementValue == '' || elementValue < 1)) {
-            $("#message").html(message('gagal', 'diubah atau ditambahkan, Kredit harus di isi', 'danger', 'pengeluaran'));
+            $("#message").html(message('gagal', 'diubah atau ditambahkan, Kredit harus di isi', 'danger', 'anggaran'));
             return false;
 
         } else {
@@ -348,8 +360,13 @@ $dataKegiatan       = $data['kegiatan'];
         data_load += '<tr>'
         data_load += '    <td bgcolor="SteelBlue"><input class="form-control" value="0" type="hidden" name="id" id="" placeholder="tanggal"></td>'
         data_load += '    <td class="dataInput"><input class="form-control" value="' + $("#tanggal_kegiatan").val() + '" type="date" name="tanggal" id="" placeholder="tanggal" readonly="readonly"></td>'
-        data_load += '    <td class="dataInput"><input class="form-control" value="" type="text" name="no_rekening" id="" placeholder="nomor rekening"></td>'
-        data_load += '    <td class="dataInput"><input class="form-control" value="" type="text" name="keterangan" id="" placeholder="keterangan" required></td>'
+        data_load += '    <td class="dataInput">'
+        data_load += '            <select name="tipe_anggaran" id="tipe_anggaran" class="form-control">'
+        data_load += '                <option value="<?= UANG_MASUK ?>">Debit</option>'
+        data_load += '                <option value="<?= UANG_KELUAR ?>">Kredit</option>'
+        data_load += '            </select>'
+        data_load += '    </td>'
+        data_load += '    <td class="dataInput"><input class="form-control" value="" type="text" name="keterangan" id="" placeholder="Uraian" required></td>'
         data_load += '    <td class="dataInput"><input class="form-control" value="" type="number" name="nominal" id="" placeholder="nominal" required></td>'
         data_load += '    <td class="dataInput">'
         data_load += '          <button class="btn btn-danger waves-effect waves-light"  onclick="' + function_remove + '"><span>Hapus</span></button>'
