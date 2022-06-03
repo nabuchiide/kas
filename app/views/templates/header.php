@@ -8,7 +8,7 @@
     <title><?= $data['judul']; ?></title>
 
     <!-- Fevicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/karawang epduli.jpeg">
     <!-- Start css -->
     <!-- Switchery css -->
     <link href="<?= BASEURL ?>/assets/plugins/switchery/switchery.min.css" rel="stylesheet">

@@ -14,8 +14,7 @@
             <div class="sidebar">
                 <!-- Start Logobar -->
                 <div class="logobar">
-                    <a href="index.html" class="logo logo-large"><img src="<?= BASEURL ?>/assets/images/logo.svg" class="img-fluid" alt="logo"></a>
-                    <a href="index.html" class="logo logo-small"><img src="<?= BASEURL ?>/assets/images/small_logo.svg" class="img-fluid" alt="logo"></a>
+                    <a href="index.html" class="logo logo-large"><img src="<?= BASEURL ?>/assets/images/karawang epduli.jpeg" class="img-fluid" height="50" alt="logo"></a>
                 </div>
                 <!-- End Logobar -->
                 <!-- Start Navigationbar -->
