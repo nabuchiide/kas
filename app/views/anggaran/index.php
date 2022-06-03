@@ -129,6 +129,51 @@ $dataKegiatan       = $data['kegiatan'];
     </div>
 </div>
 
+<div class="modal fade bd-example-modal-lg" id="dataModalDonatur" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dataModalLabel">Data Kegiatan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+
+                </button>
+            </div>
+            <div class="modal-body table-responsive">
+                <table class="table table-bordered data-table-format" width="100%">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>Tanggal</th>
+                            <th>Nama Kegiatan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no = 1;
+                        foreach ($dataKegiatan as $data) : ?>
+                            <tr>
+                                <td><?= $no; ?></td>
+                                <td><?= $data['tanggal']; ?></td>
+                                <td>
+                                    <a href="#" class="getNamaKegiatan" data-kegiatan="<?= $data['nama_kegiatan']; ?>" data-id="<?= $data['id_kegiatan']; ?>" data-tanggal="<?= $data['tanggal']; ?>" data-status="<?= $data['status']; ?>" data-dismiss="modal">
+                                        <span>
+                                            <?= $data['nama_kegiatan']; ?>
+                                        </span>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        <?php
+                            $no++;
+                        endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function() {
         $('.getNamaKegiatan').on('click', function() {

@@ -31,10 +31,6 @@ class User extends Controller
     {
         $updateData = $_POST;
         $countResult = $this->model("UserModel")->ubahData($updateData);
-        echo "<pre>";
-        print_r($updateData);
-        echo "<pre>";
-        echo $countResult;
         if ( $countResult > 0) {
             Flasher::setFlash('berhasil', 'dirubah', 'success', 'User');
             header('Location: ' . BASEURL . '/user');

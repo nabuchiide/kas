@@ -29,3 +29,7 @@ define('FINISH','2');
 define('UANG_MASUK','1');
 define('UANG_KELUAR','0');
 
+//tipe donatur
+define('SINGLE','0');
+define('GROUP','0');
+
