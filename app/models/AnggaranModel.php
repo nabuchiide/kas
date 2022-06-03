@@ -75,10 +75,10 @@ class AnggaranModel
                         id_kegiatan     =:id_kegiatan,
                         status          =:status 
                     WHERE 
-                    id_anggaran =:id_anggaran
+                        id_anggaran =:id_anggaran
             ";
         $this->db->query($query);
-        $this->db->bind('id_anggaran', $data['id_anggaran']);
+        $this->db->bind('id_anggaran', $data['id']);
         $this->db->bind('tanggal', $data['tanggal']);
         $this->db->bind('nominal', $data['nominal']);
         $this->db->bind('keterangan', $data['keterangan']);

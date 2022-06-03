@@ -185,8 +185,9 @@ $dataKegiatan       = $data['kegiatan'];
                         var inner_data = "save_" + index;
                         var function_save = "saveDataElement('" + inner_data + "')";
                         var function_connfirmation = "hapusData(" + element.id_anggaran + ");"
-                        var tipeUangMasuk = (element.tipe_anggaran == "<? UANG_MASUK ?>") ? "selected" : "";
-                        var tipeUangKeluar = (element.tipe_anggaran == "<? UANG_KELUAR ?>") ? "selected" : "";
+                        var tipeUangMasuk = (parseInt(element.tipe_anggaran) === parseInt("<?= UANG_MASUK ?>")) ? "selected" : " ";
+                        var tipeUangKeluar = (parseInt(element.tipe_anggaran) === parseInt("<?= UANG_KELUAR ?>")) ? "selected" : " ";
+
                         data_load += '<tr>'
                         data_load += '    <td><input class="form-control" value="' + element.id_anggaran + '" type="hidden" name="id" id="" >' + num + '</td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.tanggal + '" type="date" name="tanggal" id="" placeholder="tanggal" readonly="readonly"></td>'
@@ -235,7 +236,7 @@ $dataKegiatan       = $data['kegiatan'];
                 //     $.unblockUI();
                 // },
                 success: function(data) {
-                   
+
                     if (data > 0) {
                         $("#message").html(message('berhasil', 'dihapus', 'success', 'anggaran'));
                     } else {
@@ -270,7 +271,12 @@ $dataKegiatan       = $data['kegiatan'];
                         const element01 = element.children[j];
                         if (element01.tagName == "INPUT" || element01.tagName == "SELECT") {
                             element01_name = element01.name;
-                            element01_value = element01.value;
+                            if (element01.tagName == "SELECT") {
+                                element01_value= element01.options[element01.selectedIndex].value;
+                            } else {
+
+                                element01_value = element01.value;
+                            }
                             // console.log("element name :: => " + element01_name + "   ||| element_value :: => " + element01_value);
 
                             var inp = document.createElement('input')
@@ -282,7 +288,7 @@ $dataKegiatan       = $data['kegiatan'];
                                 isEdit = true;
                             }
                             if (!validationData(element01_name, element01_value)) return;
-                        }
+                        }  
                     }
                 }
             }
@@ -293,8 +299,6 @@ $dataKegiatan       = $data['kegiatan'];
         } else {
             url_send_data = "<?= BASEURL ?>/anggaran/ubah";
         }
-        // form_costume.setAttribute("action", url_send_data);
-        console.log(url_send_data);
 
         var inp = document.createElement('input')
         inp.setAttribute('type', 'text');
@@ -308,17 +312,9 @@ $dataKegiatan       = $data['kegiatan'];
             url: url_send_data,
             data: $('#insert-anggaran').serialize(),
             method: 'post',
-            // beforeSend: function() {
-            //     $.blockUI({
-            //         message: null,
-            //     });
-            // },
-            // complete: function() {
-            //     $.unblockUI();
-            // },
             success: function(result) {
                 console.log(result);
-                $("#message").html(message('sukses', 'diubah atau ditambahkan', 'success', 'pemasukan'));
+                $("#message").html(message('sukses', 'diubah atau ditambahkan', 'success', 'Anggaran'));
                 $('#insert-anggaran').remove();
                 data_id.remove();
                 reloadTabelAnggaran($("#id_kegiatan").val());

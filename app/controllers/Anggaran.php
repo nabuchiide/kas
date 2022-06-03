@@ -40,13 +40,12 @@ class Anggaran extends Controller
     {
         $_POST['status'] = WAITING;
         $updateData = $_POST;
+       
         if ($this->model("AnggaranModel")->ubahData($updateData) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'anggaran');
-            header('Location: ' . BASEURL . '/anggaran');
             exit;
         } else {
             Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'anggaran');
-            header('Location: ' . BASEURL . '/anggaran');
             exit;
         }
     }
