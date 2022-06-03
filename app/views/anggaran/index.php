@@ -229,10 +229,10 @@ $dataKegiatan       = $data['kegiatan'];
                         const element = data[index];
                         var inner_data = "save_" + index;
                         var function_save = "saveDataElement('" + inner_data + "')";
+                        var function_viewDonatur = "viewDonatur()"
                         var function_connfirmation = "hapusData(" + element.id_anggaran + ");"
                         var tipeUangMasuk = (parseInt(element.tipe_anggaran) === parseInt("<?= UANG_MASUK ?>")) ? "selected" : " ";
                         var tipeUangKeluar = (parseInt(element.tipe_anggaran) === parseInt("<?= UANG_KELUAR ?>")) ? "selected" : " ";
-
                         data_load += '<tr>'
                         data_load += '    <td><input class="form-control" value="' + element.id_anggaran + '" type="hidden" name="id" id="" >' + num + '</td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.tanggal + '" type="date" name="tanggal" id="" placeholder="tanggal" readonly="readonly"></td>'
@@ -243,6 +243,7 @@ $dataKegiatan       = $data['kegiatan'];
                         data_load += '            </select>'
                         data_load += '    </td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.keterangan + '" type="text" name="keterangan" id="" placeholder="keterangan" required ></td>'
+                        data_load += '    <td class="dataInput"><input class="form-control" value="' + element.keterangan + '" type="hidden" name="id_donatur" id="" placeholder="id_donatur" required ></td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.nominal + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
                         data_load += '    <td class="dataInput">'
                         data_load += '          <button class="getHapus btn btn-danger waves-effect waves-light" data-id="' + element.id_anggaran + '" onclick="' + function_connfirmation + '"><span>Hapus</span></button>'
