@@ -41,7 +41,7 @@ class AnggaranModel
     public function getDataByIdKegiatan($id_kegiatan)
     {
         $allData = [];
-        $this->db->query(" SELECT * FROM anggaran WHERE id_kegiatan =:id_kegiatan");
+        $this->db->query(" SELECT a.*, d.* FROM anggaran a LEFT JOIN donatur d on d.id_donatur = a.id_donatur WHERE id_kegiatan =:id_kegiatan  ");
         $this->db->bind('id_kegiatan', $id_kegiatan);
         $allData = $this->db->resultset();
         return $allData;
@@ -50,8 +50,8 @@ class AnggaranModel
     public function tambahData($data)
     {
         $query = " INSERT INTO 
-                anggaran(id_anggaran, tanggal, nominal, keterangan, tipe_anggaran, id_kegiatan, status)  
-                VALUES ('', :tanggal, :nominal, :keterangan, :tipe_anggaran, :id_kegiatan, :status)
+                anggaran(id_anggaran, tanggal, nominal, keterangan, tipe_anggaran, id_kegiatan, status, id_donatur)  
+                VALUES ('', :tanggal, :nominal, :keterangan, :tipe_anggaran, :id_kegiatan, :status, :id_donatur)
             ";
         $this->db->query($query);
         $this->db->bind('tanggal', $data['tanggal']);
@@ -60,6 +60,7 @@ class AnggaranModel
         $this->db->bind('tipe_anggaran', $data['tipe_anggaran']);
         $this->db->bind('id_kegiatan', $data['id_kegiatan']);
         $this->db->bind('status', $data['status']);
+        $this->db->bind('id_donatur', $data['id_donatur']);
 
         $this->db->execute();
         return $this->db->rowCount();
@@ -73,6 +74,7 @@ class AnggaranModel
                         keterangan      =:keterangan,
                         tipe_anggaran   =:tipe_anggaran,
                         id_kegiatan     =:id_kegiatan,
+                        id_donatur      =:id_donatur,
                         status          =:status 
                     WHERE 
                         id_anggaran =:id_anggaran
@@ -84,6 +86,7 @@ class AnggaranModel
         $this->db->bind('keterangan', $data['keterangan']);
         $this->db->bind('tipe_anggaran', $data['tipe_anggaran']);
         $this->db->bind('id_kegiatan', $data['id_kegiatan']);
+        $this->db->bind('id_donatur', $data['id_donatur']);
         $this->db->bind('status', $data['status']);
 
         $this->db->execute();

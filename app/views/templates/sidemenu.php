@@ -36,7 +36,7 @@
                             </a>
                             <ul class="vertical-submenu">
                                 <li><a href="<?= BASEURL ?>/kegiatan">Kegiatan</a></li>
-                                <li><a href="<?= BASEURL ?>/anggaran">Pengeluaran</a></li>
+                                <li><a href="<?= BASEURL ?>/anggaran">Anggaran</a></li>
                             </ul>
                         </li>
                         <li>

@@ -62,6 +62,7 @@ $dataKegiatan       = $data['kegiatan'];
                                 <th>Tanggal</th>
                                 <th>Tipe Anggaran</th>
                                 <th>Uraian</th>
+                                <th>Donatur</th>
                                 <th>nominal</th>
                                 <th>Action</th>
                             </tr>
@@ -210,14 +211,6 @@ $dataKegiatan       = $data['kegiatan'];
             },
             method: 'post',
             dataType: 'json',
-            // beforeSend: function() {
-            //     $.blockUI({
-            //         message: null
-            //     });
-            // },
-            // complete: function() {
-            //     $.unblockUI();
-            // },
             success: function(data) {
                 var data_load = '';
                 num = 0;
@@ -228,23 +221,26 @@ $dataKegiatan       = $data['kegiatan'];
                         num++;
                         const element = data[index];
                         var inner_data = "save_" + index;
+                        var inner_view = "view_" + index;
+                        var inner_view2 = "view2_" + index;
                         var function_save = "saveDataElement('" + inner_data + "')";
-                        var function_viewDonatur = "viewDonatur()"
+                        var function_viewDonatur = "viewDonatur('" + inner_view + "', '" + inner_view2 + "')";
                         var function_connfirmation = "hapusData(" + element.id_anggaran + ");"
                         var tipeUangMasuk = (parseInt(element.tipe_anggaran) === parseInt("<?= UANG_MASUK ?>")) ? "selected" : " ";
                         var tipeUangKeluar = (parseInt(element.tipe_anggaran) === parseInt("<?= UANG_KELUAR ?>")) ? "selected" : " ";
+                        var namaDonatur = (element.nama_donatur != null) ? element.nama_donatur : "-";
                         data_load += '<tr>'
                         data_load += '    <td><input class="form-control" value="' + element.id_anggaran + '" type="hidden" name="id" id="" >' + num + '</td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.tanggal + '" type="date" name="tanggal" id="" placeholder="tanggal" readonly="readonly"></td>'
                         data_load += '    <td class="dataInput">'
-                        data_load += '            <select name="tipe_anggaran" id="tipe_anggaran" class="form-control">'
+                        data_load += '            <select id="' + inner_view + '" name="tipe_anggaran" id="tipe_anggaran" class="form-control">'
                         data_load += '                <option value="<?= UANG_MASUK ?>" ' + tipeUangMasuk + '>Debit</option>'
                         data_load += '                <option value="<?= UANG_KELUAR ?>" ' + tipeUangKeluar + '>Kredit</option>'
                         data_load += '            </select>'
                         data_load += '    </td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.keterangan + '" type="text" name="keterangan" id="" placeholder="keterangan" required ></td>'
-                        data_load += '    <td class="dataInput"><input class="form-control" value="' + element.keterangan + '" type="hidden" name="id_donatur" id="" placeholder="id_donatur" required ></td>'
-                        data_load += '    <td class="dataInput"><input class="form-control" value="' + element.nominal + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
+                        data_load += '    <td class="dataInput"><a onclick="' + function_viewDonatur + '" href="#">' + namaDonatur + '</a><input class="form-control" value="' + element.id_donatur + '" type="hidden" name="id_donatur" id="'+inner_view2+'" placeholder="id_donatur" required ></td>'
+                        data_load += '    <td class="dataInput"><input class="form-control" value="' + element.id_donatur + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
                         data_load += '    <td class="dataInput">'
                         data_load += '          <button class="getHapus btn btn-danger waves-effect waves-light" data-id="' + element.id_anggaran + '" onclick="' + function_connfirmation + '"><span>Hapus</span></button>'
                         data_load += '          <button class="save btn btn-primary waves-effect waves-light" id="' + inner_data + '" onclick="' + function_save + '">Simpan</button>'
@@ -318,7 +314,7 @@ $dataKegiatan       = $data['kegiatan'];
                         if (element01.tagName == "INPUT" || element01.tagName == "SELECT") {
                             element01_name = element01.name;
                             if (element01.tagName == "SELECT") {
-                                element01_value= element01.options[element01.selectedIndex].value;
+                                element01_value = element01.options[element01.selectedIndex].value;
                             } else {
 
                                 element01_value = element01.value;
@@ -334,7 +330,7 @@ $dataKegiatan       = $data['kegiatan'];
                                 isEdit = true;
                             }
                             if (!validationData(element01_name, element01_value)) return;
-                        }  
+                        }
                     }
                 }
             }
@@ -428,5 +424,13 @@ $dataKegiatan       = $data['kegiatan'];
         allert_load += '</button>'
         allert_load += '</div>'
         return allert_load
+    }
+
+    function viewDonatur(a, hiddenForm){
+        var y = document.getElementById(a).value;
+        var x = document.getElementById(hiddenForm).value;
+        if(y == "<?=UANG_MASUK?>"){
+            alert("show donatur")
+        }
     }
 </script>
