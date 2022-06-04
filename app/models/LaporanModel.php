@@ -150,4 +150,52 @@ class LaporanModel
         return $allData;
     }
 
+    public function getTotalSaldo($tipe_anggaran)
+    {
+        $query = "SELECT 
+                CASE
+                    WHEN sum(nominal) is null THEN 0
+                    ELSE sum(nominal) 
+                END
+                as totalAnggaran
+            FROM 
+                anggaran a 
+            WHERE a.tipe_anggaran =:tipe_anggaran ";
+        $this->db->query($query);
+        $this->db->bind('tipe_anggaran', $tipe_anggaran);
+        $allData = $this->db->single();
+        return $allData;
+    }
+
+    public function getTotalKegiatan()
+    {
+        $query = "SELECT 
+                   COUNT(*) as total
+                FROM 
+                    kegiatan ";
+        $this->db->query($query);
+        $allData = $this->db->single();
+        return $allData;
+    }
+
+    public function getTotalDonatur(){
+        $query = "SELECT 
+                COUNT(*) as total
+            FROM 
+                donatur ";
+        $this->db->query($query);
+        $allData = $this->db->single();
+        return $allData;
+    }
+
+    public function getTopDonatur(){
+        $query = "SELECT 
+                    d.nama_donatur as nama_donatur, 
+                    sum( a.nominal) as total  
+                from donatur d join anggaran a on a.id_donatur = d.id_donatur 
+                group by nama_donatur order by total desc limit 5 ";
+        $this->db->query($query);
+        $allData = $this->db->resultset();
+        return $allData;
+    }
 }

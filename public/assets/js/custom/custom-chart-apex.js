@@ -4,7 +4,7 @@
 ---------------------------------
 */
 "use strict";
-$(document).ready(function() {
+$(document).ready(function () {
     /* -----  Apex Line Chart ----- */
     var options = {
         chart: {
@@ -30,18 +30,19 @@ $(document).ready(function() {
         },
         grid: {
             row: {
-                colors: ['transparent', 'transparent'], opacity: .2
+                colors: ['transparent', 'transparent'],
+                opacity: .2
             },
             borderColor: 'rgba(0,0,0,0.05)'
         },
         xaxis: {
             categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
             axisBorder: {
-                show: true, 
+                show: true,
                 color: 'rgba(0,0,0,0.05)'
             },
             axisTicks: {
-                show: true, 
+                show: true,
                 color: 'rgba(0,0,0,0.05)'
             }
         }
@@ -60,9 +61,9 @@ $(document).ready(function() {
                 show: false
             },
             zoom: {
-              type: 'x',
-              enabled: false,
-              autoScaleYaxis: true
+                type: 'x',
+                enabled: false,
+                autoScaleYaxis: true
             },
         },
         dataLabels: {
@@ -86,17 +87,18 @@ $(document).ready(function() {
             type: 'datetime',
             categories: ["2018-09-19T00:00:00", "2018-09-19T01:30:00", "2018-09-19T02:30:00", "2018-09-19T03:30:00", "2018-09-19T04:30:00", "2018-09-19T05:30:00", "2018-09-19T06:30:00"],
             axisBorder: {
-                show: true, 
+                show: true,
                 color: 'rgba(0,0,0,0.05)'
             },
             axisTicks: {
-                show: true, 
+                show: true,
                 color: 'rgba(0,0,0,0.05)'
             }
         },
         grid: {
             row: {
-                colors: ['transparent', 'transparent'], opacity: .2
+                colors: ['transparent', 'transparent'],
+                opacity: .2
             },
             borderColor: 'rgba(0,0,0,0.05)'
         },
@@ -125,7 +127,7 @@ $(document).ready(function() {
             bar: {
                 horizontal: false,
                 columnWidth: '25%',
-                endingShape: 'rounded'  
+                endingShape: 'rounded'
             },
         },
         dataLabels: {
@@ -150,17 +152,18 @@ $(document).ready(function() {
         xaxis: {
             categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
             axisBorder: {
-                show: true, 
+                show: true,
                 color: 'rgba(0,0,0,0.05)'
             },
             axisTicks: {
-                show: true, 
+                show: true,
                 color: 'rgba(0,0,0,0.05)'
             }
         },
         grid: {
             row: {
-                colors: ['transparent', 'transparent'], opacity: .2
+                colors: ['transparent', 'transparent'],
+                opacity: .2
             },
             borderColor: 'rgba(0,0,0,0.05)'
         },
@@ -180,7 +183,7 @@ $(document).ready(function() {
         options
     );
     chart.render();
-    
+
     /* Apex Stacked Bar Chart */
     var options = {
         chart: {
@@ -200,29 +203,30 @@ $(document).ready(function() {
                 columnWidth: '20%',
             },
         },
-        colors: ['#0080ff','#d4d8de'],
+        colors: ['#0080ff', '#d4d8de'],
         series: [{
             name: 'Earning',
             data: [5, 7, 8, 6, 7, 5, 6, 6, 7, 4]
-        },{
+        }, {
             name: 'Paid',
             data: [5, 4, 4, 5, 3, 4, 3, 5, 4, 6]
-        }],        
+        }],
         xaxis: {
             type: 'datetime',
             categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT', '01/05/2011 GMT', '01/06/2011 GMT', '01/07/2011 GMT', '01/08/2011 GMT', '01/09/2011 GMT', '01/10/2011 GMT'],
             axisBorder: {
-                show: true, 
+                show: true,
                 color: 'rgba(0,0,0,0.05)'
             },
             axisTicks: {
-                show: true, 
+                show: true,
                 color: 'rgba(0,0,0,0.05)'
             }
         },
         grid: {
             row: {
-                colors: ['transparent', 'transparent'], opacity: .2
+                colors: ['transparent', 'transparent'],
+                opacity: .2
             },
             borderColor: 'rgba(0,0,0,0.05)'
         },
@@ -236,7 +240,7 @@ $(document).ready(function() {
     var chart = new ApexCharts(
         document.querySelector("#apex-stacked-bar-chart"),
         options
-    );        
+    );
     chart.render();
     /* -- Apex Pie Chart -- */
     var options = {
@@ -254,7 +258,7 @@ $(document).ready(function() {
         dataLabels: {
             enabled: false
         },
-        colors: ['#0080ff','#18d26b','#d4d8de'],
+        colors: ['#0080ff', '#18d26b', '#d4d8de'],
         series: [60, 45, 25],
         labels: ['Electronics', 'Fashion', 'Food'],
         legend: {
@@ -265,7 +269,7 @@ $(document).ready(function() {
     var chart = new ApexCharts(
         document.querySelector("#apex-pie-chart"),
         options
-    );        
+    );
     chart.render();
     /* Apex Radial Chart */
     var options = {
@@ -294,13 +298,13 @@ $(document).ready(function() {
                 }
             }
         },
-        colors: ['#0080ff', '#18d26b','#ffa800', '#d4d8de'],
+        colors: ['#0080ff', '#18d26b', '#ffa800', '#d4d8de'],
         series: [44, 55, 67, 83],
-        labels: ['News', 'Media', 'Ads', 'Others'], 
+        labels: ['News', 'Media', 'Ads', 'Others'],
     }
-   var chart = new ApexCharts(
+    var chart = new ApexCharts(
         document.querySelector("#apex-radial-chart"),
         options
-    );    
+    );
     chart.render();
 });
