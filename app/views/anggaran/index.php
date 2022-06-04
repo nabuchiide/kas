@@ -444,9 +444,6 @@ $dataDonatur        = $data['donatur'];
 
     function viewDonatur(view1, view2, view3) {
         var y = document.getElementById(view1).value;
-        // var x = document.getElementById(view2).value;
-        // var a = document.getElementById(view3).value;
-        // var z = 'addIdDonatur("' + view1 + '", "' + view2 + '", "' + view3 + '")';
         if (y == "<?= UANG_MASUK ?>") {
             $("#dataModalDonatur").modal("show");
             $('.updateIdDonatur').attr("data-view1", view1)
