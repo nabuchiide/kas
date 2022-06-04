@@ -73,8 +73,8 @@ class Laporan extends Controller
     {
         $data['judul'] = 'Laporan Summary';
         $data['bulan'] = $this->convertMonth($month);
-        $data['nama_KPA'] = $this->model('PegawaiModel')->getDataByJabatan(KEPALA);
-        $data['nama_Bendahara'] = $this->model('PegawaiModel')->getDataByJabatan(BENDAHARA);
+        $data['nama_KPA'] = $this->model('PengurusModel')->getDataByJabatan(KEPALA);
+        $data['nama_Bendahara'] = $this->model('PengurusModel')->getDataByJabatan(BENDAHARA);
         $data['anggaran'] = $this->model("LaporanModel")->getLaporanSummary($month);
         $data['totalPemasukanSampaiBulanLalu'] = $this->model("LaporanModel")->getTotalSaldoSampaiBulanLalu($month, UANG_MASUK);
         $data['totalPengeluaranSampaiBulanLalu'] = $this->model("LaporanModel")->getTotalSaldoSampaiBulanLalu($month, UANG_KELUAR);
@@ -100,8 +100,6 @@ class Laporan extends Controller
             "November",
             "Desember"
         );
-// $cars[0] . ", " . $cars[1] . " and " . $cars[2]
-        // return months[parseInt(monthArr[1] - 1)] + " " + monthArr[0]
-        return $months[intval($monthArr)-intval(-1)]." ".$monthArr[0];
+        return $months[intval($monthArr[1])-1]." ".$monthArr[0];
     }
 }

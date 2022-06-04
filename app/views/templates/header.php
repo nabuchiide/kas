@@ -8,7 +8,7 @@
     <title><?= $data['judul']; ?></title>
 
     <!-- Fevicon -->
-    <link rel="shortcut icon" href="assets/images/karawang epduli.jpeg">
+    <link rel="shortcut icon" href="<?= BASEURL ?>/assets/images/karawang epduli.jpeg">
     <!-- Start css -->
     <!-- Switchery css -->
     <link href="<?= BASEURL ?>/assets/plugins/switchery/switchery.min.css" rel="stylesheet">
@@ -59,7 +59,7 @@
     <script src="<?= BASEURL ?>/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
     <script src="<?= BASEURL ?>/assets/js/custom/custom-table-datatable.js"></script>
     <!-- Core js -->
-    <script src="assets/js/core.js"></script>
+    <script src="<?= BASEURL ?>/assets/js/core.js"></script>
     <!-- End js -->
     
     <!-- End js -->

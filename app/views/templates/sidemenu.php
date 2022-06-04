@@ -41,7 +41,7 @@
                         </li>
                         <li>
                             <a href="javaScript:void();">
-                                <img src="assets/images/svg-icon/form_elements.svg" class="img-fluid" alt="basic"><span>Laporan</span><i class="feather icon-chevron-right pull-right"></i>
+                                <img src="<?=BASEURL?>/assets/images/svg-icon/form_elements.svg" class="img-fluid" alt="basic"><span>Laporan</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
                                 <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
@@ -120,7 +120,7 @@
                                         <li class="list-inline-item">
                                             <div class="profilebar">
                                                 <div class="dropdown">
-                                                    <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/profile.svg" class="img-fluid" alt="profile"><span class="feather icon-chevron-down live-icon"></span></a>
+                                                    <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?=BASEURL?>/assets/images/users/profile.svg" class="img-fluid" alt="profile"><span class="feather icon-chevron-down live-icon"></span></a>
                                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
                                                         <div class="dropdown-item">
                                                             <div class="profilename">
@@ -130,7 +130,7 @@
                                                         <div class="userbox">
                                                             <ul class="list-unstyled mb-0">
                                                                 <li class="media dropdown-item">
-                                                                    <a href="#" class="profile-icon"><img src="assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
+                                                                    <a href="#" class="profile-icon"><img src="<?=BASEURL?>/assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
                                                                 </li>
                                                             </ul>
                                                         </div>

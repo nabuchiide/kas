@@ -4,29 +4,29 @@
             <div class="card-body">
                 <div class="row text-center">
                     <div class="col-sm-3">
-                        <img src="<?= BASEURL ?>/assets/images/bappeda-logo.png" height="150" alt="logo">
+                        <img src="<?= BASEURL ?>/assets/images/karawang epduli.jpeg" height="150" alt="logo">
                     </div>
                     <div class="col-sm-7">
                         <div class="row d-flex justify-content-center">
-                            <h3 class="text-center">Pemerintah Kabupaten Karawang</h3>
+                            <h2 class="text-center">Karawang Peduli</h2>
                         </div>
                         <div class="row d-flex justify-content-center">
-                            <h2 class="text-center">BUKU KAS UMUM</h2>
+                            <h3 class="text-center">Berbagi dan Peduli dengan Hati</h3>
                         </div>
                     </div>
                 </div>
                 <hr>
                 <div class="row">
-                    <label for="example-text-input" class="col-sm-3 col-form-label">SKPD</label>
-                    <label for="example-text-input" class="col-sm-7 col-form-label">: DINAS KOPERASI DAN UMKM KABUPATEN KARAWANG</label>
+                    <label for="example-text-input" class="col-sm-3 col-form-label">Organisai</label>
+                    <label for="example-text-input" class="col-sm-7 col-form-label">: KARAWANG PEDULI</label>
                 </div>
                 <div class="row">
                     <label for="example-text-input" class="col-sm-3 col-form-label">Pengguna Anggaran (PA)/Kuasa PA/Kepala Bagian</label>
-                    <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['nama_KPA']['nama_pegawai'] ?></label>
+                    <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['nama_KPA']['nama_pengurus'] ?></label>
                 </div>
                 <div class="row">
-                    <label for="example-text-input" class="col-sm-3 col-form-label">Bendahara (Penerimaan/Pengeluaran)</label>
-                    <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['nama_Bendahara']['nama_pegawai'] ?></label>
+                    <label for="example-text-input" class="col-sm-3 col-form-label">Bendahara</label>
+                    <label for="example-text-input" class="col-sm-2 col-form-label">: <?= $data['nama_Bendahara']['nama_pengurus'] ?></label>
                 </div>
                 <div class="row">
                     <label for="example-text-input" class="col-sm-3 col-form-label">Bendahara Pembantu</label>
@@ -42,7 +42,7 @@
                         <tr>
                             <th>No</th>
                             <th>Tanggal</th>
-                            <th>No Rekening</th>
+                            <th>Donatur</th>
                             <th>Nama Kegiatan</th>
                             <th>Uraian</th>
                             <th>Debit</th>
@@ -62,7 +62,7 @@
                             <tr>
                                 <td><?= $no; ?></td>
                                 <td><?= $anggaran['tanggal']; ?></td>
-                                <td><?= $anggaran['no_rekening']; ?></td>
+                                <td><?= $anggaran['donatur_result']; ?></td>
                                 <td><?= $anggaran['nama_kegiatan_result']; ?></td>
                                 <td><?= $anggaran['keterangan']; ?></td>
                                 <td><?= number_format($debit); ?></td>
@@ -112,8 +112,8 @@
                 <label for="example-text-input" class="col-sm-10 col-form-label d-flex justify-content-center">Mengetahui,</label>
             </div>
             <div class="row">
-                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> Kuasa Pengguna Anggaran,</label>
-                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> Bendahara Pembantu Pengeluaran,</label>
+                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> Kepal Bagian,</label>
+                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around"> Bendahara,</label>
             </div>
             <br>
             <br>
@@ -121,12 +121,12 @@
             <br>
             <br>
             <div class="row">
-                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around" style="text-decoration: underline;"> <?= $data['nama_KPA']['nama_pegawai']; ?></label>
-                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around" style="text-decoration: underline;"> <?= $data['nama_Bendahara']['nama_pegawai']; ?></label>
+                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around" style="text-decoration: underline;"> <?= $data['nama_KPA']['nama_pengurus']; ?></label>
+                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around" style="text-decoration: underline;"> <?= $data['nama_Bendahara']['nama_pengurus']; ?></label>
             </div>
             <div class="row">
-                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around">NIP. <?= $data['nama_KPA']['no_pegawai']; ?></label>
-                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around">NIP. <?= $data['nama_Bendahara']['no_pegawai']; ?></label>
+                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around">NIP. <?= $data['nama_KPA']['no_pengurus']; ?></label>
+                <label for="example-text-input" class="col-sm-5 col-form-label d-flex justify-content-around">NIP. <?= $data['nama_Bendahara']['no_pengurus']; ?></label>
             </div>
             <br>
         </div>

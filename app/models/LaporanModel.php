@@ -67,8 +67,13 @@ class LaporanModel
                         CASE 
                             WHEN a.tipe_anggaran = 1 THEN a.nominal 
                             ELSE '-' 
-                        END as debit 
+                        END as debit,
+                        CASE 
+                            WHEN a.id_donatur = 0 THEN '-'
+                            ELSE d.nama_donatur
+                        END as donatur_result
                     FROM anggaran a LEFT JOIN kegiatan k on a.id_kegiatan = k.id_kegiatan
+                    LEFT JOIN donatur d on a.id_donatur = d.id_donatur
                     WHERE 
                         tipe_anggaran in ('1','0') and a.tanggal Like :month ORDER BY tanggal DESC";
         $this->db->query($query);
