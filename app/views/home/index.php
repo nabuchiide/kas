@@ -94,20 +94,17 @@
         <div class="col-lg-7 col-xl-2">
             <div class="card m-b-30">
                 <div class="card-body text-center">
-
                     <div class="user-slider">
-                        <?php foreach ($data['topDonatur'] as $data) : ?>
+                        <?php foreach ($data['topDonatur'] as $top) : ?>
                             <div class="user-slider-item">
                                 <img src="<?= BASEURL ?>/assets/images/users/men.svg" alt="avatar" class="rounded-circle mt-3 mb-4">
-                                <h5> <?= $data['nama_donatur']?></h5>
+                                <h5> <?= $top['nama_donatur']?></h5>
                                 <p>Sebesar</p>
-                                <p>Rp. <?= $data['total']?></p>
+                                <p>Rp. <?= $top['total']?></p>
                             </div>
                         <?php endforeach; ?>
                     </div>
-
                 </div>
-
             </div>
         </div>
 

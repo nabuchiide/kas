@@ -5,6 +5,9 @@ class Home extends Controller
     {
         $data['judul'] = 'Dashboard';
         $data['mainController'] = 'Home';
+        $data['totalKegiatan'] = $this->model("LaporanModel")->getTotalKegiatan();
+        $data['totalDonatur'] = $this->model("LaporanModel")->getTotalDonatur();
+        $data['topDonatur'] = $this->model("LaporanModel")->getTopDonatur();
         $data['januari'] = $this->model("LaporanModel")->getTotalSaldoBulanIni('2022-01', UANG_MASUK);
         $data['februari'] = $this->model("LaporanModel")->getTotalSaldoBulanIni('2022-02', UANG_MASUK);
         $data['maret'] = $this->model("LaporanModel")->getTotalSaldoBulanIni('2022-03', UANG_MASUK);
@@ -19,9 +22,6 @@ class Home extends Controller
         $data['desember'] = $this->model("LaporanModel")->getTotalSaldoBulanIni('2022-12', UANG_MASUK);
         $data['totalPemasukan'] = $this->model("LaporanModel")->getTotalSaldo(UANG_MASUK);
         $data['totalPengeluaran'] = $this->model("LaporanModel")->getTotalSaldo(UANG_KELUAR);
-        $data['totalKegiatan'] = $this->model("LaporanModel")->getTotalKegiatan();
-        $data['totalDonatur'] = $this->model("LaporanModel")->getTotalDonatur();
-        $data['topDonatur'] = $this->model("LaporanModel")->getTopDonatur();
         $this->view('templates/header', $data);
         $this->view('templates/sidemenu');
         $this->view('home/index', $data);
