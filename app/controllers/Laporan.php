@@ -34,8 +34,8 @@ class Laporan extends Controller
     public function summary()
     {
         $data['judul'] = 'Laporan Summary';
-        $data['nama_KPA'] = $this->model('PegawaiModel')->getDataByJabatan(KEPALA);
-        $data['nama_Bendahara'] = $this->model('PegawaiModel')->getDataByJabatan(BENDAHARA);
+        $data['nama_KPA'] = $this->model('PengurusModel')->getDataByJabatan(KEPALA);
+        $data['nama_Bendahara'] = $this->model('PengurusModel')->getDataByJabatan(BENDAHARA);
         $this->view('templates/header', $data);
         $this->view('templates/sidemenu');
         $this->view('laporan/summary/index', $data);

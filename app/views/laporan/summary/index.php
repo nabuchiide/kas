@@ -123,14 +123,6 @@
                 },
                 method: 'post',
                 dataType: 'json',
-                beforeSend: function() {
-                    $.blockUI({
-                        message: null
-                    });
-                },
-                complete: function() {
-                    $.unblockUI();
-                },
                 success: function(result) {
                     console.log(result)
                     data_load = ''

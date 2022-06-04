@@ -44,7 +44,7 @@
                                 <img src="assets/images/svg-icon/form_elements.svg" class="img-fluid" alt="basic"><span>Laporan</span><i class="feather icon-chevron-right pull-right"></i>
                             </a>
                             <ul class="vertical-submenu">
-                                <li><a href="basic-ui-kits-alerts.html">Laporan</a></li>
+                                <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
                             </ul>
                         </li>
 
