@@ -8,93 +8,65 @@
     <meta name="keywords" content="admin, admin panel, admin template, admin dashboard, responsive, bootstrap 4, ui kits, ecommerce, web app, crm, cms, html, sass support, scss">
     <meta name="author" content="Themesbox">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Login Dinkop</title>
-
-    <link rel="icon" href="<?= BASEURL ?>/assets/images/favicon-logo.ico">
-
+    <title>Orbiter - Bootstrap Minimal & Clean Admin Template</title>
+    <!-- Fevicon -->
+    <link rel="shortcut icon" href="<?= BASEURL ?>/assets/images/karawang epduli.jpeg">
+    <!-- Start css -->
     <link href="<?= BASEURL ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="<?= BASEURL ?>/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="<?= BASEURL ?>/assets/css/style.css" rel="stylesheet" type="text/css">
     <!-- End css -->
-    <style>
-        .divider:after,
-        .divider:before {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #eee;
-        }
-
-        .h-custom {
-            height: calc(100% - 73px);
-        }
-
-        @media (max-width: 450px) {
-            .h-custom {
-                height: 100%;
-            }
-        }
-    </style>
 </head>
 
-<body>
+<body class="vertical-layout">
     <!-- Start Containerbar -->
     <div id="containerbar" class="containerbar authenticate-bg">
         <!-- Start Container -->
-        <div class="container mt-5">
-            <div class="card">
-                <section class="vh-25 mt-2">
-                    <div class="container-fluid h-custom">
-                        <div class="row d-flex justify-content-center align-items-center h-100">
-                            <div class="col-md-9 col-lg-6 col-xl-5">
-                                <img src="<?= BASEURL ?>/assets/images/draw2.webp" class="img-fluid" alt="Sample image">
-                            </div>
-                            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                                <form action="login/login_process" method="POST">
-                                    
-                                    <div class="divider d-flex align-items-center my-4">
-                                        <p class="text-center fw-bold mx-3 mb-0"> <img src="<?= BASEURL ?>/assets/images/bappeda-logo.png" height="100" alt="logo"></p>
-                                    </div>
+        <div class="container">
+            <div class="auth-box login-box">
+                <!-- Start row -->
+                <div class="row no-gutters align-items-center justify-content-center">
+                    <!-- Start col -->
+                    <div class="col-md-6 col-lg-5">
+                        <!-- Start Auth Box -->
+                        <div class="auth-box-right">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="<?= BASEURL ?>/login/login_process" method="POST">
+                                        <div class="form-head">
+                                            <a href="index.html" class="logo"><img src="<?= BASEURL ?>/assets/images/karawang epduli.jpeg" class="img-fluid" alt="logo"></a>
+                                        </div>
+                                        <h4 class="text-primary my-4">Log in !</h4>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="username" placeholder="Enter Username here" required name="user_name">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" id="password" placeholder="Enter Password here" required name="password">
+                                        </div>
 
-                                    <!-- Email input -->
-                                    <div class="form-outline mb-4">
-                                        <input type="text" id="user_name" class="form-control form-control-lg" placeholder="Masukan User Name" name="user_name" />
-                                    </div>
+                                        <button type="submit" class="btn btn-success btn-lg btn-block font-18">Log in</button>
+                                    </form>
 
-                                    <!-- Password input -->
-                                    <div class="form-outline mb-3">
-                                        <input type="password" id="password" class="form-control form-control-lg" placeholder="Masukan password" name="password" />
-                                    </div>
-
-                                    <div class="text-center text-lg-start mt-4 pt-2">
-                                        <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
+                        <!-- End Auth Box -->
                     </div>
-                </section>
-                <br>
+                    <!-- End col -->
+                </div>
+                <!-- End row -->
             </div>
         </div>
         <!-- End Container -->
     </div>
-
     <!-- End Containerbar -->
     <!-- Start js -->
-    <!-- jQuery  -->
     <script src="<?= BASEURL ?>/assets/js/jquery.min.js"></script>
     <script src="<?= BASEURL ?>/assets/js/popper.min.js"></script>
     <script src="<?= BASEURL ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?= BASEURL ?>/assets/js/modernizr.min.js"></script>
     <script src="<?= BASEURL ?>/assets/js/detect.js"></script>
-    <script src="<?= BASEURL ?>/assets/js/fastclick.js"></script>
-    <script src="<?= BASEURL ?>/assets/js/jquery.blockUI.js"></script>
-    <script src="<?= BASEURL ?>/assets/js/waves.js"></script>
-    <script src="<?= BASEURL ?>/assets/js/jquery.nicescroll.js"></script>
-
-    <!-- App js -->
-    <script src="<?= BASEURL ?>/assets/js/app.js"></script>
+    <script src="<?= BASEURL ?>/assets/js/jquery.slimscroll.js"></script>
     <!-- End js -->
 </body>
 

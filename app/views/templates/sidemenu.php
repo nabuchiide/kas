@@ -19,37 +19,108 @@
                 <!-- End Logobar -->
                 <!-- Start Navigationbar -->
                 <div class="navigationbar">
-                    <ul class="vertical-menu">
-                        <li>
-                            <a href="javaScript:void();">
-                                <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>Kategori</span><i class="feather icon-chevron-right pull-right"></i>
-                            </a>
-                            <ul class="vertical-submenu">
-                                <li><a href="<?= BASEURL ?>/user">User</a></li>
-                                <li><a href="<?= BASEURL ?>/pengurus">Pengurus</a></li>
-                                <li><a href="<?= BASEURL ?>/donatur">Donatur</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javaScript:void();">
-                                <img src="<?=BASEURL?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>main</span><i class="feather icon-chevron-right pull-right"></i>
-                            </a>
-                            <ul class="vertical-submenu">
-                                <li><a href="<?= BASEURL ?>/kegiatan">Kegiatan</a></li>
-                                <li><a href="<?= BASEURL ?>/pemasukan">Pemasukan</a></li>
-                                <li><a href="<?= BASEURL ?>/pengeluaran">Pengeluaran</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javaScript:void();">
-                                <img src="<?=BASEURL?>/assets/images/svg-icon/form_elements.svg" class="img-fluid" alt="basic"><span>Laporan</span><i class="feather icon-chevron-right pull-right"></i>
-                            </a>
-                            <ul class="vertical-submenu">
-                                <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
-                            </ul>
-                        </li>
+                    <?php
+                    $sessionUserType = $_SESSION['login']['type'];
+                    if ($sessionUserType == MASTER_USR) { ?>
+                        <ul class="vertical-menu">
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>Kategori</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/user">User</a></li>
+                                    <li><a href="<?= BASEURL ?>/pengurus">Pengurus</a></li>
+                                    <li><a href="<?= BASEURL ?>/donatur">Donatur</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>main</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/kegiatan">Kegiatan</a></li>
+                                    <li><a href="<?= BASEURL ?>/pemasukan">Pemasukan</a></li>
+                                    <li><a href="<?= BASEURL ?>/pengeluaran">Pengeluaran</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/form_elements.svg" class="img-fluid" alt="basic"><span>Laporan</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
+                                </ul>
+                            </li>
 
-                    </ul>
+                        </ul>
+                    <?php } else if ($sessionUserType == KEPALA_USR) { ?>
+                        <ul class="vertical-menu">
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/form_elements.svg" class="img-fluid" alt="basic"><span>Laporan</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    <?php } else if ($sessionUserType == BENDAHARA_USR) { ?>
+                        <ul class="vertical-menu">
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>Kategori</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/user">User</a></li>
+                                    <li><a href="<?= BASEURL ?>/pengurus">Pengurus</a></li>
+                                    <li><a href="<?= BASEURL ?>/donatur">Donatur</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>main</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/kegiatan">Kegiatan</a></li>
+                                    <li><a href="<?= BASEURL ?>/pemasukan">Pemasukan</a></li>
+                                    <li><a href="<?= BASEURL ?>/pengeluaran">Pengeluaran</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/form_elements.svg" class="img-fluid" alt="basic"><span>Laporan</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    <?php } else if ($sessionUserType == ADMIN_USR) { ?>
+                        <ul class="vertical-menu">
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>main</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/kegiatan">Kegiatan</a></li>
+                                    <li><a href="<?= BASEURL ?>/pengeluaran">Pengeluaran</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/form_elements.svg" class="img-fluid" alt="basic"><span>Laporan</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    <?php } else {
+                        header("Location: " . BASEURL . "/login/logout");
+                    } ?>
                 </div>
                 <!-- End Navigationbar -->
             </div>
@@ -121,7 +192,7 @@
                                         <li class="list-inline-item">
                                             <div class="profilebar">
                                                 <div class="dropdown">
-                                                    <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?=BASEURL?>/assets/images/users/profile.svg" class="img-fluid" alt="profile"><span class="feather icon-chevron-down live-icon"></span></a>
+                                                    <a class="dropdown-toggle" href="#" role="button" id="profilelink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?= BASEURL ?>/assets/images/users/profile.svg" class="img-fluid" alt="profile"><span class="feather icon-chevron-down live-icon"></span></a>
                                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profilelink">
                                                         <div class="dropdown-item">
                                                             <div class="profilename">
@@ -131,7 +202,7 @@
                                                         <div class="userbox">
                                                             <ul class="list-unstyled mb-0">
                                                                 <li class="media dropdown-item">
-                                                                    <a href="#" class="profile-icon"><img src="<?=BASEURL?>/assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
+                                                                    <a href="#" class="profile-icon"><img src="<?= BASEURL ?>/assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
