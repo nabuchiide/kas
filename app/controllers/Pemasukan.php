@@ -4,63 +4,59 @@ class Pemasukan extends Controller
     public function index()
     {
         $data['judul'] = 'Pemasukan';
-        $data['anggaran'] = $this->model("AnggaranModel")->getDataPemasukan();
+        $data['kegiatan'] = $this->model("KegiatanModel")->getAllDataStatusWiting();
+        $data['donatur'] = $this->model("DonaturModel")->getAllData();
         $this->view('templates/header', $data);
         $this->view('templates/sidemenu');
         $this->view('anggaran/pemasukan/index', $data);
         $this->view('templates/footer');
     }
 
+    public function getByKegitanAnggaran()
+    {
+        $allData = [];
+        $allData = $this->model("AnggaranModel")->getDataByIdKegiatan($_POST['id'], UANG_MASUK);
+        echo json_encode($allData);
+    }
+
     public function tambah()
     {
-        $_POST['type_anggaran'] = UANG_MASUK;
-        $_POST['id_kegiatan'] = 0;
+        $_POST['tipe_anggaran'] = UANG_MASUK;
         $_POST['status'] = WAITING;
         $saveData = $_POST;
-
+        echo "<pre>";
+        print_r($saveData);
+        echo "</pre>";
         if ($this->model("AnggaranModel")->tambahData($saveData) > 0) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Pemasukan');
-            header('Location: ' . BASEURL . '/pemasukan');
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'anggaran');
+            header('Location: ' . BASEURL . '/anggaran');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Pemasukan');
-            header('Location: ' . BASEURL . '/pemasukan');
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'anggaran');
+            header('Location: ' . BASEURL . '/anggaran');
             exit;
         }
     }
 
     public function ubah()
     {
-        $_POST['type_anggaran'] = UANG_MASUK;
-        $_POST['id_kegiatan'] = 0;
+        $_POST['tipe_anggaran'] = UANG_MASUK;
         $_POST['status'] = WAITING;
         $updateData = $_POST;
 
         if ($this->model("AnggaranModel")->ubahData($updateData) > 0) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'Pemasukan');
-            header('Location: ' . BASEURL . '/pemasukan');
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'anggaran');
             exit;
         } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'Pemasukan');
-            header('Location: ' . BASEURL . '/pemasukan');
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'anggaran');
             exit;
         }
     }
 
-    public function hapus($id){
-        if ($this->model("AnggaranModel")->hapusData($id) > 0) {
-            Flasher::setFlash('berhasil', 'dihapus', 'success', 'Pemasukan');
-            header('Location: ' . BASEURL . '/pemasukan');
-            exit;
-        } else {
-            Flasher::setFlash('gagal', 'dihapus', 'danger', 'Pemasukan');
-            header('Location: ' . BASEURL . '/pemasukan');
-            exit;
-        }
-    }
-
-    public function getUbah()
+    public function hapus()
     {
-        echo json_encode($this->model('AnggaranModel')->getOneData($_POST['id']));
+        $id = $_POST['id'];
+        $result = $this->model("AnggaranModel")->hapusData($id);
+        echo json_encode($result);
     }
 }

@@ -33,16 +33,18 @@ class AnggaranModel
     public function getDataPemasukan()
     {
         $allData = [];
-        $this->db->query(" SELECT * FROM anggaran WHERE type_anggaran = '" . UANG_MASUK . "'");
+        $this->db->query(" SELECT * FROM anggaran WHERE tipe_anggaran = '" . UANG_MASUK . "'");
         $allData = $this->db->resultset();
         return $allData;
     }
 
-    public function getDataByIdKegiatan($id_kegiatan)
+    public function getDataByIdKegiatan($id_kegiatan, $tipe_anggaran)
     {
         $allData = [];
-        $this->db->query(" SELECT a.*, d.* FROM anggaran a LEFT JOIN donatur d on d.id_donatur = a.id_donatur WHERE id_kegiatan =:id_kegiatan  ");
+        $this->db->query(" SELECT a.*, d.* FROM anggaran a LEFT JOIN donatur d on d.id_donatur = a.id_donatur 
+                            WHERE id_kegiatan =:id_kegiatan  and tipe_anggaran =:tipe_anggaran ");
         $this->db->bind('id_kegiatan', $id_kegiatan);
+        $this->db->bind('tipe_anggaran', $tipe_anggaran);
         $allData = $this->db->resultset();
         return $allData;
     }

@@ -1,6 +1,5 @@
 <?php
 $dataKegiatan       = $data['kegiatan'];
-$dataDonatur        = $data['donatur'];
 ?>
 <div class="breadcrumbbar">
     <div class="row align-items-center">
@@ -61,9 +60,7 @@ $dataDonatur        = $data['donatur'];
                             <tr>
                                 <th>No</th>
                                 <th>Tanggal</th>
-                                <th>Tipe Anggaran</th>
                                 <th>Uraian</th>
-                                <th>Donatur</th>
                                 <th>nominal</th>
                                 <th>Action</th>
                             </tr>
@@ -131,50 +128,6 @@ $dataDonatur        = $data['donatur'];
     </div>
 </div>
 
-<div class="modal fade bd-example-modal-lg" id="dataModalDonatur" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="dataModalLabel">Nama Donatur</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-
-                </button>
-            </div>
-            <div class="modal-body table-responsive">
-                <table class="table table-bordered data-table-format" width="100%" id="table-donatur">
-                    <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>Nama</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $no = 1;
-                        foreach ($dataDonatur as $data) :
-                            $idSend = "sendDOnatur" . $no;
-                        ?>
-                            <tr>
-                                <td><?= $no; ?></td>
-                                <td>
-                                    <a href="#" id="<?= $idSend ?>" class="updateIdDonatur" data-nama="<?= $data['nama_donatur']; ?>" data-id="<?= $data['id_donatur']; ?>" data-dismiss="modal">
-                                        <span>
-                                            <?= $data['nama_donatur']; ?>
-                                        </span>
-                                    </a>
-
-                                </td>
-                            </tr>
-                        <?php
-                            $no++;
-                        endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script>
     $(document).ready(function() {
@@ -204,20 +157,12 @@ $dataDonatur        = $data['donatur'];
             $("#cardAnggaran").show();
         })
 
-        $('.updateIdDonatur').on('click', function() {
-            const id = $(this).data('id');
-            const namaDonatur = $(this).data('nama');
-            const view1 = $(this).data('view1');
-            const view2 = $(this).data('view2');
-            const view3 = $(this).data('view3');
-            document.getElementById(view2).innerHTML = namaDonatur
-            document.getElementById(view3).value = id;
-        });
+        
     });
 
     function reloadTabelAnggaran(id) {
         $.ajax({
-            url: '<?= BASEURL; ?>/anggaran/getByKegitanAnggaran',
+            url: '<?= BASEURL; ?>/pengeluaran/getByKegitanAnggaran',
             data: {
                 id: id
             },
@@ -245,17 +190,7 @@ $dataDonatur        = $data['donatur'];
                         data_load += '<tr>'
                         data_load += '    <td><input class="form-control" value="' + element.id_anggaran + '" type="hidden" name="id" id="" >' + num + '</td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.tanggal + '" type="date" name="tanggal" id="" placeholder="tanggal" readonly="readonly"></td>'
-                        data_load += '    <td class="dataInput">'
-                        data_load += '            <select id="' + inner_view + '" name="tipe_anggaran" id="tipe_anggaran" class="form-control">'
-                        data_load += '                <option value="<?= UANG_MASUK ?>" ' + tipeUangMasuk + '>Debit</option>'
-                        data_load += '                <option value="<?= UANG_KELUAR ?>" ' + tipeUangKeluar + '>Kredit</option>'
-                        data_load += '            </select>'
-                        data_load += '    </td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.keterangan + '" type="text" name="keterangan" id="" placeholder="keterangan" required ></td>'
-                        data_load += '    <td class="dataInput">'
-                        data_load += '          <a  style="text-decoration:none" onclick="' + function_viewDonatur + '" href="#"><span id="' + inner_view2 + '">' + namaDonatur + '</span></a>'
-                        data_load += '          <input class="form-control" value="' + element.id_donatur + '" type="hidden" name="id_donatur" id="' + inner_view3 + '" placeholder="id_donatur" required >'
-                        data_load += '    </td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.nominal + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
                         data_load += '    <td class="dataInput">'
                         data_load += '          <button class="getHapus btn btn-danger waves-effect waves-light" data-id="' + element.id_anggaran + '" onclick="' + function_connfirmation + '"><span>Hapus</span></button>'
@@ -279,7 +214,7 @@ $dataDonatur        = $data['donatur'];
         console.log(isExecuted);
         if (isExecuted) {
             $.ajax({
-                url: '<?= BASEURL ?>/anggaran/hapus',
+                url: '<?= BASEURL ?>/pengeluaran/hapus',
                 data: {
                     id: id
                 },
@@ -345,9 +280,9 @@ $dataDonatur        = $data['donatur'];
         }
 
         if (!isEdit) {
-            url_send_data = "<?= BASEURL ?>/anggaran/tambah";
+            url_send_data = "<?= BASEURL ?>/pengeluaran/tambah";
         } else {
-            url_send_data = "<?= BASEURL ?>/anggaran/ubah";
+            url_send_data = "<?= BASEURL ?>/pengeluaran/ubah";
         }
 
         var inp = document.createElement('input')
@@ -410,17 +345,7 @@ $dataDonatur        = $data['donatur'];
         data_load += '<tr>'
         data_load += '    <td bgcolor="SteelBlue"><input class="form-control" value="0" type="hidden" name="id" id="" placeholder="tanggal"></td>'
         data_load += '    <td class="dataInput"><input class="form-control" value="' + $("#tanggal_kegiatan").val() + '" type="date" name="tanggal" id="" placeholder="tanggal" readonly="readonly"></td>'
-        data_load += '    <td class="dataInput">'
-        data_load += '            <select id="' + inner_view + '"  name="tipe_anggaran" id="tipe_anggaran" class="form-control">'
-        data_load += '                <option value="<?= UANG_MASUK ?>">Debit</option>'
-        data_load += '                <option value="<?= UANG_KELUAR ?>">Kredit</option>'
-        data_load += '            </select>'
-        data_load += '    </td>'
         data_load += '    <td class="dataInput"><input class="form-control" value="" type="text" name="keterangan" id="" placeholder="Uraian" required></td>'
-        data_load += '    <td class="dataInput">'
-        data_load += '          <a  style="text-decoration:none" onclick="' + function_viewDonatur + '" href="#"><span id="' + inner_view2 + '"> - </span></a>'
-        data_load += '          <input class="form-control" value="" type="hidden" name="id_donatur" id="' + inner_view3 + '" placeholder="id_donatur" required >'
-        data_load += '    </td>'
         data_load += '    <td class="dataInput"><input class="form-control" value="" type="number" name="nominal" id="" placeholder="nominal" required></td>'
         data_load += '    <td class="dataInput">'
         data_load += '          <button class="btn btn-danger waves-effect waves-light"  onclick="' + function_remove + '"><span>Hapus</span></button>'
@@ -442,13 +367,4 @@ $dataDonatur        = $data['donatur'];
         return allert_load
     }
 
-    function viewDonatur(view1, view2, view3) {
-        var y = document.getElementById(view1).value;
-        if (y == "<?= UANG_MASUK ?>") {
-            $("#dataModalDonatur").modal("show");
-            $('.updateIdDonatur').attr("data-view1", view1)
-            $('.updateIdDonatur').attr("data-view2", view2)
-            $('.updateIdDonatur').attr("data-view3", view3)
-        }
-    }
 </script>
