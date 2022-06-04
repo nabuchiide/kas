@@ -202,7 +202,7 @@
                                                         <div class="userbox">
                                                             <ul class="list-unstyled mb-0">
                                                                 <li class="media dropdown-item">
-                                                                    <a href="#" class="profile-icon"><img src="<?= BASEURL ?>/assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
+                                                                    <a href="<?= BASEURL ?>/login/logout" class="profile-icon"><img src="<?= BASEURL ?>/assets/images/svg-icon/logout.svg" class="img-fluid" alt="logout">Logout</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
