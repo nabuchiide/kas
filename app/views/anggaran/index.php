@@ -1,5 +1,6 @@
 <?php
 $dataKegiatan       = $data['kegiatan'];
+$dataDonatur        = $data['donatur'];
 ?>
 <div class="breadcrumbbar">
     <div class="row align-items-center">
@@ -134,32 +135,32 @@ $dataKegiatan       = $data['kegiatan'];
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="dataModalLabel">Data Kegiatan</h5>
+                <h5 class="modal-title" id="dataModalLabel">Nama Donatur</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
 
                 </button>
             </div>
             <div class="modal-body table-responsive">
-                <table class="table table-bordered data-table-format" width="100%">
+                <table class="table table-bordered data-table-format" width="100%" id="table-donatur">
                     <thead>
                         <tr>
                             <th>NO</th>
-                            <th>Tanggal</th>
-                            <th>Nama Kegiatan</th>
+                            <th>Nama</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         $no = 1;
-                        foreach ($dataKegiatan as $data) : ?>
+                        foreach ($dataDonatur as $data) :
+                            $idSend = "sendDOnatur" . $no;
+                        ?>
                             <tr>
                                 <td><?= $no; ?></td>
-                                <td><?= $data['tanggal']; ?></td>
                                 <td>
-                                    <a href="#" class="getNamaKegiatan" data-kegiatan="<?= $data['nama_kegiatan']; ?>" data-id="<?= $data['id_kegiatan']; ?>" data-tanggal="<?= $data['tanggal']; ?>" data-status="<?= $data['status']; ?>" data-dismiss="modal">
+                                    <a href="#" id="<?= $idSend ?>" class="updateIdDonatur" data-nama="<?= $data['nama_donatur']; ?>" data-id="<?= $data['id_donatur']; ?>" data-dismiss="modal">
                                         <span>
-                                            <?= $data['nama_kegiatan']; ?>
+                                            <?= $data['nama_donatur']; ?>
                                         </span>
                                     </a>
 
@@ -177,6 +178,7 @@ $dataKegiatan       = $data['kegiatan'];
 
 <script>
     $(document).ready(function() {
+        $('#table-donatur').DataTable();
         $('.getNamaKegiatan').on('click', function() {
             const kegiatan = $(this).data('kegiatan');
             const id = $(this).data('id');
@@ -201,6 +203,16 @@ $dataKegiatan       = $data['kegiatan'];
 
             $("#cardAnggaran").show();
         })
+
+        $('.updateIdDonatur').on('click', function() {
+            const id = $(this).data('id');
+            const namaDonatur = $(this).data('nama');
+            const view1 = $(this).data('view1');
+            const view2 = $(this).data('view2');
+            const view3 = $(this).data('view3');
+            document.getElementById(view2).innerHTML = namaDonatur
+            document.getElementById(view3).value = id;
+        });
     });
 
     function reloadTabelAnggaran(id) {
@@ -223,8 +235,9 @@ $dataKegiatan       = $data['kegiatan'];
                         var inner_data = "save_" + index;
                         var inner_view = "view_" + index;
                         var inner_view2 = "view2_" + index;
+                        var inner_view3 = "view3_" + index;
+                        var function_viewDonatur = "viewDonatur('" + inner_view + "', '" + inner_view2 + "', '" + inner_view3 + "')";
                         var function_save = "saveDataElement('" + inner_data + "')";
-                        var function_viewDonatur = "viewDonatur('" + inner_view + "', '" + inner_view2 + "')";
                         var function_connfirmation = "hapusData(" + element.id_anggaran + ");"
                         var tipeUangMasuk = (parseInt(element.tipe_anggaran) === parseInt("<?= UANG_MASUK ?>")) ? "selected" : " ";
                         var tipeUangKeluar = (parseInt(element.tipe_anggaran) === parseInt("<?= UANG_KELUAR ?>")) ? "selected" : " ";
@@ -239,8 +252,11 @@ $dataKegiatan       = $data['kegiatan'];
                         data_load += '            </select>'
                         data_load += '    </td>'
                         data_load += '    <td class="dataInput"><input class="form-control" value="' + element.keterangan + '" type="text" name="keterangan" id="" placeholder="keterangan" required ></td>'
-                        data_load += '    <td class="dataInput"><a onclick="' + function_viewDonatur + '" href="#">' + namaDonatur + '</a><input class="form-control" value="' + element.id_donatur + '" type="hidden" name="id_donatur" id="'+inner_view2+'" placeholder="id_donatur" required ></td>'
-                        data_load += '    <td class="dataInput"><input class="form-control" value="' + element.id_donatur + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
+                        data_load += '    <td class="dataInput">'
+                        data_load += '          <a  style="text-decoration:none" onclick="' + function_viewDonatur + '" href="#"><span id="' + inner_view2 + '">' + namaDonatur + '</span></a>'
+                        data_load += '          <input class="form-control" value="' + element.id_donatur + '" type="hidden" name="id_donatur" id="' + inner_view3 + '" placeholder="id_donatur" required >'
+                        data_load += '    </td>'
+                        data_load += '    <td class="dataInput"><input class="form-control" value="' + element.nominal + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
                         data_load += '    <td class="dataInput">'
                         data_load += '          <button class="getHapus btn btn-danger waves-effect waves-light" data-id="' + element.id_anggaran + '" onclick="' + function_connfirmation + '"><span>Hapus</span></button>'
                         data_load += '          <button class="save btn btn-primary waves-effect waves-light" id="' + inner_data + '" onclick="' + function_save + '">Simpan</button>'
@@ -269,14 +285,6 @@ $dataKegiatan       = $data['kegiatan'];
                 },
                 method: 'post',
                 dataType: 'json',
-                // beforeSend: function() {
-                //     $.blockUI({
-                //         message: null
-                //     });
-                // },
-                // complete: function() {
-                //     $.unblockUI();
-                // },
                 success: function(data) {
 
                     if (data > 0) {
@@ -319,7 +327,7 @@ $dataKegiatan       = $data['kegiatan'];
 
                                 element01_value = element01.value;
                             }
-                            // console.log("element name :: => " + element01_name + "   ||| element_value :: => " + element01_value);
+                            console.log("element name :: => " + element01_name + "   ||| element_value :: => " + element01_value);
 
                             var inp = document.createElement('input')
                             inp.setAttribute('type', 'text');
@@ -392,6 +400,10 @@ $dataKegiatan       = $data['kegiatan'];
     function tambahDataElement(id) {
         id = parseInt(id) + 1
         var inner_data = "tambah_" + id;
+        var inner_view = "lihat_" + id;
+        var inner_view2 = "lihat2_" + id;
+        var inner_view3 = "lihat3_" + id;
+        var function_viewDonatur = "viewDonatur('" + inner_view + "', '" + inner_view2 + "', '" + inner_view3 + "')";
         var function_save = "saveDataElement('" + inner_data + "')";
         var function_remove = "removeElement('" + inner_data + "')";
         var data_load = '';
@@ -399,12 +411,16 @@ $dataKegiatan       = $data['kegiatan'];
         data_load += '    <td bgcolor="SteelBlue"><input class="form-control" value="0" type="hidden" name="id" id="" placeholder="tanggal"></td>'
         data_load += '    <td class="dataInput"><input class="form-control" value="' + $("#tanggal_kegiatan").val() + '" type="date" name="tanggal" id="" placeholder="tanggal" readonly="readonly"></td>'
         data_load += '    <td class="dataInput">'
-        data_load += '            <select name="tipe_anggaran" id="tipe_anggaran" class="form-control">'
+        data_load += '            <select id="' + inner_view + '"  name="tipe_anggaran" id="tipe_anggaran" class="form-control">'
         data_load += '                <option value="<?= UANG_MASUK ?>">Debit</option>'
         data_load += '                <option value="<?= UANG_KELUAR ?>">Kredit</option>'
         data_load += '            </select>'
         data_load += '    </td>'
         data_load += '    <td class="dataInput"><input class="form-control" value="" type="text" name="keterangan" id="" placeholder="Uraian" required></td>'
+        data_load += '    <td class="dataInput">'
+        data_load += '          <a  style="text-decoration:none" onclick="' + function_viewDonatur + '" href="#"><span id="' + inner_view2 + '"> - </span></a>'
+        data_load += '          <input class="form-control" value="" type="hidden" name="id_donatur" id="' + inner_view3 + '" placeholder="id_donatur" required >'
+        data_load += '    </td>'
         data_load += '    <td class="dataInput"><input class="form-control" value="" type="number" name="nominal" id="" placeholder="nominal" required></td>'
         data_load += '    <td class="dataInput">'
         data_load += '          <button class="btn btn-danger waves-effect waves-light"  onclick="' + function_remove + '"><span>Hapus</span></button>'
@@ -426,11 +442,16 @@ $dataKegiatan       = $data['kegiatan'];
         return allert_load
     }
 
-    function viewDonatur(a, hiddenForm){
-        var y = document.getElementById(a).value;
-        var x = document.getElementById(hiddenForm).value;
-        if(y == "<?=UANG_MASUK?>"){
-            alert("show donatur")
+    function viewDonatur(view1, view2, view3) {
+        var y = document.getElementById(view1).value;
+        // var x = document.getElementById(view2).value;
+        // var a = document.getElementById(view3).value;
+        // var z = 'addIdDonatur("' + view1 + '", "' + view2 + '", "' + view3 + '")';
+        if (y == "<?= UANG_MASUK ?>") {
+            $("#dataModalDonatur").modal("show");
+            $('.updateIdDonatur').attr("data-view1", view1)
+            $('.updateIdDonatur').attr("data-view2", view2)
+            $('.updateIdDonatur').attr("data-view3", view3)
         }
     }
 </script>

@@ -68,6 +68,9 @@ class AnggaranModel
 
     public function ubahData($data)
     {
+        echo"<pre>";
+        print_r($data);
+        echo"</pre>";
         $query = "  UPDATE anggaran SET 
                         tanggal         =:tanggal,
                         nominal         =:nominal,

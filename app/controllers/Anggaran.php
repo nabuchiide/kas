@@ -5,6 +5,7 @@ class Anggaran extends Controller
     {
         $data['judul'] = 'Anggaran';
         $data['kegiatan'] = $this->model("KegiatanModel")->getAllDataStatusWiting();
+        $data['donatur'] = $this->model("DonaturModel")->getAllData();
         $this->view('templates/header', $data);
         $this->view('templates/sidemenu');
         $this->view('anggaran/index', $data);
@@ -40,7 +41,7 @@ class Anggaran extends Controller
     {
         $_POST['status'] = WAITING;
         $updateData = $_POST;
-       
+
         if ($this->model("AnggaranModel")->ubahData($updateData) > 0) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'anggaran');
             exit;
