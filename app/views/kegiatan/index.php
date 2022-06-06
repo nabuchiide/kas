@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Nama Kegiatan</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Lokasi Kegiatan</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" value="" id="lokasi" name="lokasi" placeholder="Lokasi Kegiatan">
                                 </div>
@@ -72,7 +72,6 @@
                                 <th>Tanggal</th>
                                 <th>Nama Kegitan</th>
                                 <th>Lokasi</th>
-                                <th>Status</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
@@ -90,7 +89,6 @@
                                             </a>
                                         </td>
                                         <td><?= $data['lokasi']; ?></td>
-                                        <td><?= $data['status']; ?></td>
                                         <td>
                                             <a href="<?= BASEURL; ?>/kegiatan/hapus/<?= $data['id_kegiatan']; ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
                                                 <span>
@@ -172,7 +170,7 @@
                         console.log(data);
                         $('#id_kegiatan').val(data.id_kegiatan);
                         $('#nama_kegiatan').val(data.nama_kegiatan);
-                        $('#organisasi').val(data.organisasi);
+                        $('#lokasi').val(data.lokasi);
                         $('#tanggal').val(data.tanggal);
                         $('#keterangan').val(data.keterangan);
 
