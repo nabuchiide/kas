@@ -52,7 +52,9 @@ class DonaturModel
 
     public function ubahData($data)
     {
-
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
         $query = " UPDATE donatur SET 
                         nama_donatur=:nama_donatur,
                         kontak=:kontak,

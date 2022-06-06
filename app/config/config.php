@@ -31,5 +31,5 @@ define('UANG_KELUAR','0');
 
 //tipe donatur
 define('SINGLE','0');
-define('GROUP','0');
+define('GROUP','1');
 

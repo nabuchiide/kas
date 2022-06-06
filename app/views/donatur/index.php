@@ -89,7 +89,7 @@
                         <tbody>
                             <?php $no=1; foreach ($data['donatur'] as $data) : ?>
                                 <tr>
-                                    <td><?= $no; ?></td>
+                                    <td><?= $no++; ?></td>
                                     <td><?= $data['nama_donatur']; ?></td>
                                     <td><?= $data['kontak']; ?></td>
                                     <td><?= $data['no_rekening']; ?></td>
