@@ -43,7 +43,7 @@ class LaporanModel
             } else if ($status_loop == PROCESS) {
                 $status_loop = "Telah di Setujui Bendahara";
             } else if ($status_loop == FINISH) {
-                $status_loop = "Telah di Setuju Kepala Bagian";
+                $status_loop = "Telah di Setuju Pengurus";
             } else {
                 $status_loop = " - ";
             }
@@ -86,7 +86,7 @@ class LaporanModel
             } else if ($status_loop == PROCESS) {
                 $status_loop = "Telah di Setujui Bendahara";
             } else if ($status_loop == FINISH) {
-                $status_loop = "Telah di Setuju Kepala Bagian";
+                $status_loop = "Telah di Setuju Pengurus";
             } else {
                 $status_loop = " - ";
             }

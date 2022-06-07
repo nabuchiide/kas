@@ -95,7 +95,7 @@ class Pengurus extends Controller
 
     public function convertJabatan($jabatan)
     {
-        if ($jabatan == "Kepala Bagian") {
+        if ($jabatan == "Pengurus") {
             $jabatan = KEPALA;
         } else  if ($jabatan == "Bendahara") {
             $jabatan = BENDAHARA;

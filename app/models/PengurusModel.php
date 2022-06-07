@@ -18,7 +18,7 @@ class PengurusModel
         for ($i = 0; $i < count($allData); $i++) {
             $jabatan_loop = $allData[$i]['jabatan'];
             if ($jabatan_loop == KEPALA) {
-                $jabatan_loop = "Kepala Bagian";
+                $jabatan_loop = "Pengurus";
             } else  if ($jabatan_loop == BENDAHARA) {
                 $jabatan_loop = "Bendahara";
             }else if ($jabatan_loop == STAF) {
@@ -55,7 +55,7 @@ class PengurusModel
 
     public function hapus($id_pengurus)
     {
-        $query = " DELETE  FROM pengurus WHERE id=:id_pengurus";
+        $query = " DELETE  FROM pengurus WHERE id_pengurus=:id_pengurus";
         $this->db->query($query);
         $this->db->bind('id_pengurus', $id_pengurus);
 

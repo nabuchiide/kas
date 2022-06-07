@@ -44,7 +44,7 @@
                                 <!-- <input class="form-control" type="text" value="" id="user_type" name="user_type"> -->
                                 <select class="form-control" id="user_type" name="user_type">
                                     <option value="">Select Type</option>
-                                    <option value="<?= KEPALA_USR ?>">Kepala Bagian</option>
+                                    <option value="<?= KEPALA_USR ?>">Pengurus</option>
                                     <option value="<?= BENDAHARA_USR ?>">Bendahara</option>
                                     <option value="<?= ADMIN_USR ?>">Admin</option>
                                 </select>
