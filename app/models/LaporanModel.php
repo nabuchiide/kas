@@ -129,15 +129,15 @@ class LaporanModel
                         BETWEEN 
                                 (SELECT 
                                     CASE 
-                                        WHEN (SELECT MIN(tanggal) FROM anggaran) > CAST(DATE_ADD(CONCAT(:month, '-01'), INTERVAL -1 MONTH) AS DATE) THEN CAST(DATE_ADD(CONCAT(:month, '-01'), INTERVAL -1 MONTH) AS DATE)
-                                        WHEN  (SELECT MIN(tanggal) FROM anggaran) = CAST(DATE_ADD(CONCAT(:month, '-01'), INTERVAL -1 MONTH) AS DATE) THEN CAST(DATE_ADD(CONCAT(:month, '-01'), INTERVAL -1 MONTH) AS DATE)
+                                        WHEN (SELECT MIN(tanggal) FROM anggaran) > CAST(DATE_ADD(CONCAT(:month, '-01'), INTERVAL -2 MONTH) AS DATE) THEN CAST(DATE_ADD(CONCAT(:month, '-01'), INTERVAL -2 MONTH) AS DATE)
+                                        WHEN  (SELECT MIN(tanggal) FROM anggaran) = CAST(DATE_ADD(CONCAT(:month, '-01'), INTERVAL -2 MONTH) AS DATE) THEN CAST(DATE_ADD(CONCAT(:month, '-01'), INTERVAL -2 MONTH) AS DATE)
                                     ELSE (SELECT MIN(tanggal) FROM anggaran)
                                 END) 
                         AND
                                 (SELECT 
                                     CASE 
-                                        WHEN (SELECT MIN(tanggal) FROM anggaran) > CAST(DATE_ADD(LAST_DAY(:month_date), INTERVAL -0 MONTH) AS DATE) THEN CAST(DATE_ADD(LAST_DAY(:month_date), INTERVAL -0 MONTH) AS DATE)
-                                        WHEN  (SELECT MIN(tanggal) FROM anggaran) = CAST(DATE_ADD(LAST_DAY(:month_date), INTERVAL -0 MONTH) AS DATE) THEN CAST(DATE_ADD(LAST_DAY(:month_date), INTERVAL -0 MONTH) AS DATE)
+                                        WHEN (SELECT MIN(tanggal) FROM anggaran) > CAST(DATE_ADD(LAST_DAY(:month_date), INTERVAL -1 MONTH) AS DATE) THEN CAST(DATE_ADD(LAST_DAY(:month_date), INTERVAL -1 MONTH) AS DATE)
+                                        WHEN  (SELECT MIN(tanggal) FROM anggaran) = CAST(DATE_ADD(LAST_DAY(:month_date), INTERVAL -1 MONTH) AS DATE) THEN CAST(DATE_ADD(LAST_DAY(:month_date), INTERVAL -1 MONTH) AS DATE)
                                     ELSE (SELECT MIN(tanggal) FROM anggaran)
                                 END)
 
