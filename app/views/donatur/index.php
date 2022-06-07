@@ -91,8 +91,8 @@
                                 <tr>
                                     <td><?= $no++; ?></td>
                                     <td><?= $data['nama_donatur']; ?></td>
-                                    <td><?= $data['kontak']; ?></td>
                                     <td><?= $data['no_rekening']; ?></td>
+                                    <td><?= $data['kontak']; ?></td>
                                     <td><?= $data['tipe_donatur_desc']; ?></td>
                                     <td>
                                         <a href="<?= BASEURL; ?>/donatur/hapus/<?= $data['id_donatur']; ?>" class="btn btn-danger waves-effect waves-light" onclick="return confirm('Yakin?');">
