@@ -378,11 +378,15 @@ $dataDonatur        = $data['donatur'];
 
     function validationData(elementName, elementValue) {
         if (elementName == 'keterangan' && elementValue == '') {
-            $("#message").html(message('gagal', 'diubah atau ditambahkan, Keterangan harus di isi', 'danger', 'anggaran'));
+            $("#message").html(message('gagal', 'diubah atau ditambahkan, Uraian harus di isi', 'danger', 'anggaran'));
             return false;
 
         } else if (elementName == 'nominal' && (elementValue == '' || elementValue < 1)) {
-            $("#message").html(message('gagal', 'diubah atau ditambahkan, Kredit harus di isi', 'danger', 'anggaran'));
+            $("#message").html(message('gagal', 'diubah atau ditambahkan, nominal harus di isi', 'danger', 'anggaran'));
+            return false;
+
+        } else if (elementName == 'id_donatur' && (elementValue == '' || elementValue == null)) {
+            $("#message").html(message('gagal', 'diubah atau ditambahkan, donatur harus di isi', 'danger', 'anggaran'));
             return false;
 
         } else {
@@ -430,9 +434,9 @@ $dataDonatur        = $data['donatur'];
     }
 
     function viewDonatur(view1, view2, view3) {
-            $("#dataModalDonatur").modal("show");
-            $('.updateIdDonatur').attr("data-view1", view1)
-            $('.updateIdDonatur').attr("data-view2", view2)
-            $('.updateIdDonatur').attr("data-view3", view3)
+        $("#dataModalDonatur").modal("show");
+        $('.updateIdDonatur').attr("data-view1", view1)
+        $('.updateIdDonatur').attr("data-view2", view2)
+        $('.updateIdDonatur').attr("data-view3", view3)
     }
 </script>
