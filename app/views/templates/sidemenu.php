@@ -51,7 +51,14 @@
                                     <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
                                 </ul>
                             </li>
-
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/basic.svg" class="img-fluid" alt="basic"><span>Tentang</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/tentang">tentang</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     <?php } else if ($sessionUserType == KEPALA_USR) { ?>
                         <ul class="vertical-menu">
@@ -63,7 +70,14 @@
                                     <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
                                 </ul>
                             </li>
-
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/basic.svg" class="img-fluid" alt="basic"><span>Tentang</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/tentang">tentang</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     <?php } else if ($sessionUserType == BENDAHARA_USR) { ?>
                         <ul class="vertical-menu">
@@ -95,10 +109,27 @@
                                     <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
                                 </ul>
                             </li>
-
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/basic.svg" class="img-fluid" alt="basic"><span>Tentang</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/tentang">tentang</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     <?php } else if ($sessionUserType == ADMIN_USR) { ?>
                         <ul class="vertical-menu">
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>Kategori</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/user">User</a></li>
+                                    <li><a href="<?= BASEURL ?>/pengurus">Pengurus</a></li>
+                                    <li><a href="<?= BASEURL ?>/donatur">Donatur</a></li>
+                                </ul>
+                            </li>
                             <li>
                                 <a href="javaScript:void();">
                                     <img src="<?= BASEURL ?>/assets/images/svg-icon/dashboard.svg" class="img-fluid" alt="dashboard"><span>main</span><i class="feather icon-chevron-right pull-right"></i>
@@ -116,7 +147,14 @@
                                     <li><a href="<?= BASEURL ?>/laporan/summary">Laporan</a></li>
                                 </ul>
                             </li>
-
+                            <li>
+                                <a href="javaScript:void();">
+                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/basic.svg" class="img-fluid" alt="basic"><span>Tentang</span><i class="feather icon-chevron-right pull-right"></i>
+                                </a>
+                                <ul class="vertical-submenu">
+                                    <li><a href="<?= BASEURL ?>/tentang">tentang</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     <?php } else {
                         header("Location: " . BASEURL . "/login/logout");
@@ -155,15 +193,15 @@
                         <div class="row align-items-center">
                             <div class="col-md-12">
                                 <div class="mobile-logobar">
-                                    <a href="index.html" class="mobile-logo"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
+                                    <a href="index.html" class="mobile-logo"><img src="<?= BASEURL ?>/assets/images/logo.svg" class="img-fluid" alt="logo"></a>
                                 </div>
                                 <div class="mobile-togglebar">
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item">
                                             <div class="topbar-toggle-icon">
                                                 <a class="topbar-toggle-hamburger" href="javascript:void();">
-                                                    <img src="assets/images/svg-icon/horizontal.svg" class="img-fluid menu-hamburger-horizontal" alt="horizontal">
-                                                    <img src="assets/images/svg-icon/verticle.svg" class="img-fluid menu-hamburger-vertical" alt="verticle">
+                                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/horizontal.svg" class="img-fluid menu-hamburger-horizontal" alt="horizontal">
+                                                    <img src="<?= BASEURL ?>/assets/images/svg-icon/verticle.svg" class="img-fluid menu-hamburger-vertical" alt="verticle">
                                                 </a>
                                             </div>
                                         </li>
@@ -186,7 +224,16 @@
                         <div class="row align-items-center">
                             <!-- Start col -->
                             <div class="col-md-12 align-self-center">
+                                <div class="togglebar">
+                                    <ul class="list-inline mb-0">
 
+                                        <li class="list-inline-item">
+                                            <h3>
+                                                Perancangan sistem informasi buku kas umum berbasis web
+                                            </h3>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <div class="infobar">
                                     <ul class="list-inline mb-0">
                                         <li class="list-inline-item">

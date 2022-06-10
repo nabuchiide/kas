@@ -174,7 +174,7 @@ $dataDonatur        = $data['donatur'];
         </div>
     </div>
 </div>
-
+<script src="<?= BASEURL ?>/assets/plugins/autonumeric/autoNumeric.js"></script>
 <script>
     $(document).ready(function() {
         $('#table-donatur').DataTable();
@@ -249,7 +249,7 @@ $dataDonatur        = $data['donatur'];
                         data_load += '          <a  style="text-decoration:none" onclick="' + function_viewDonatur + '" href="#"><span id="' + inner_view2 + '">' + namaDonatur + '</span></a>'
                         data_load += '          <input class="form-control" value="' + element.id_donatur + '" type="hidden" name="id_donatur" id="' + inner_view3 + '" placeholder="id_donatur" required >'
                         data_load += '    </td>'
-                        data_load += '    <td class="dataInput"><input class="form-control" value="' + element.nominal + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
+                        data_load += '    <td class="dataInput"><input class="form-control nominalData" value="' + element.nominal + '" type="number" name="nominal" id="" placeholder="nominal" required ></td>'
                         data_load += '    <td class="dataInput">'
                         data_load += '          <button class="getHapus btn btn-danger waves-effect waves-light" data-id="' + element.id_anggaran + '" onclick="' + function_connfirmation + '"><span>Hapus</span></button>'
                         data_load += '          <button class="save btn btn-primary waves-effect waves-light" id="' + inner_data + '" onclick="' + function_save + '">Simpan</button>'
@@ -412,7 +412,7 @@ $dataDonatur        = $data['donatur'];
         data_load += '          <a  style="text-decoration:none" onclick="' + function_viewDonatur + '" href="#"><span id="' + inner_view2 + '"> - </span></a>'
         data_load += '          <input class="form-control" value="" type="hidden" name="id_donatur" id="' + inner_view3 + '" placeholder="id_donatur" required >'
         data_load += '    </td>'
-        data_load += '    <td class="dataInput"><input class="form-control" value="" type="number" name="nominal" id="" placeholder="nominal" required></td>'
+        data_load += '    <td class="dataInput"><input class="form-control nominalData" value="" type="number" name="nominal" id="" placeholder="nominal" lang="en-150" required></td>'
         data_load += '    <td class="dataInput">'
         data_load += '          <button class="btn btn-danger waves-effect waves-light"  onclick="' + function_remove + '"><span>Hapus</span></button>'
         data_load += '          <button class="save btn btn-primary waves-effect waves-light" id="' + inner_data + '" onclick="' + function_save + '">Simpan</button>'
