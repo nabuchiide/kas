@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Jun 2022 pada 05.49
+-- Waktu pembuatan: 10 Jun 2022 pada 05.13
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.23
 
@@ -43,9 +43,16 @@ CREATE TABLE `anggaran` (
 --
 
 INSERT INTO `anggaran` (`id_anggaran`, `tanggal`, `nominal`, `keterangan`, `tipe_anggaran`, `id_kegiatan`, `id_donatur`, `status`) VALUES
-(13, '2022-06-01', 213123, '1212', 0, 4, 0, 0),
+(13, '2022-06-01', 213123, '1212', 1, 4, 2, 0),
 (14, '2022-06-01', 12121, 'ERREW', 1, 4, 2, 0),
-(15, '2022-06-01', 10, 'Tulisan Tangan', 1, 4, 2, 0);
+(15, '2022-06-01', 10, 'Tulisan Tangan', 1, 4, 2, 0),
+(16, '2022-06-01', 1122, 'pengeluaran', 0, 4, 0, 0),
+(17, '2022-06-01', 1000, 'rte3qw', 1, 4, 3, 0),
+(18, '2022-06-09', 10000, 'qweqewqe', 1, 6, 3, 0),
+(19, '2022-06-09', 2000, 'qwertfdsfgdsa', 1, 6, 3, 0),
+(20, '2022-06-06', 7000, 'musa testing', 1, 5, 2, 0),
+(21, '2022-06-06', 7000, 'testing 123', 1, 5, 2, 0),
+(22, '2022-06-06', 789654, 'desr', 1, 5, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -66,7 +73,8 @@ CREATE TABLE `donatur` (
 --
 
 INSERT INTO `donatur` (`id_donatur`, `nama_donatur`, `kontak`, `no_rekening`, `tipe_donatur`) VALUES
-(2, 'hamba allah', '12345', '10', 0);
+(2, 'hamba allah', '12345', '10', 1),
+(3, 'hamba allah 2', '012548', '1236574', 1);
 
 -- --------------------------------------------------------
 
@@ -88,7 +96,9 @@ CREATE TABLE `kegiatan` (
 --
 
 INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`, `lokasi`, `tanggal`, `keterangan`, `status`) VALUES
-(4, 'Musa testing kegiatan', '', '2022-06-01', 'testing 1', 0);
+(4, 'Musa testing kegiatan', 'karawang', '2022-06-08', 'testing 1', 0),
+(5, 'test', 'Karawang', '2022-06-06', 'test', 0),
+(6, 'Training PNS', 'Pebayuran', '2022-06-09', 'tet', 0);
 
 -- --------------------------------------------------------
 
@@ -108,7 +118,9 @@ CREATE TABLE `pengurus` (
 --
 
 INSERT INTO `pengurus` (`id_pengurus`, `nama_pengurus`, `no_pengurus`, `jabatan`) VALUES
-(5, 'anne kepala bagian', '0123456', 1);
+(5, 'anne kepala bagian', '01234567', 1),
+(6, 'anne bendahara', '123654', 2),
+(7, 'anne staf', '14789', 3);
 
 -- --------------------------------------------------------
 
@@ -129,7 +141,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_name`, `password`, `user_type`, `id_user`, `no_pengurus`) VALUES
-('kepala1', 'kepala', '1', 9, '0123456');
+('kepala1', 'kepala', '1', 9, '0123456'),
+('master', 'master', '0', 10, '');
 
 --
 -- Indexes for dumped tables
@@ -173,31 +186,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `anggaran`
 --
 ALTER TABLE `anggaran`
-  MODIFY `id_anggaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_anggaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `donatur`
 --
 ALTER TABLE `donatur`
-  MODIFY `id_donatur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_donatur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id_kegiatan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kegiatan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengurus`
 --
 ALTER TABLE `pengurus`
-  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pengurus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
